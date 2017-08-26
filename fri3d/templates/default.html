@@ -1,12 +1,48 @@
 {% extends "main.html" %}
-{% block title %}Welkom...{% endblock %}
+{% block title %}Fri3d Content{% endblock %}
 {% block moreCSS %}{% endblock %}
 {% block moreJS %}{% endblock %}
 
 {% block content %}
 
-<h2>Informatie</h2>
+<div class="jumbotron">
 
-<b>TODO</b>
+  <div class="i18n toggle" style="float:right"><input type="checkbox"></div>
+
+  <div class="i18n nl">
+    <div class="container">
+      <h1 class="display-3">Dit wordt Fri3d Camp 2018!</h1>
+
+      <p>
+        De derde editie van <a href="http://fri3d.be"><strong>Fri3d
+        Camp</strong></a> komt dichterbij!<br>Vanaf nu kan ook jij <strong>jouw
+        voorstel voor een activiteit</strong> insturen.
+      </p>
+
+      <p>
+        <a class="btn btn-primary btn-lg" href="/cfp" role="button">Lees en beantwoord de Fri3d Camp 2018 CFP »</a>
+      </p>
+
+    </div>
+  </div>
+  
+  <div class="i18n en">
+    <div class="container">
+      <h1 class="display-3">This will be Fri3d Camp 2018!</h1>
+
+      <p>
+        The third edition of <a href="http://fri3d.be"><strong>Fri3d
+        Camp</strong></a> is closing in!<br>As of now, you too can submit <strong>your
+        activity proposal</strong>.
+      </p>
+
+      <p>
+        <a class="btn btn-primary btn-lg" href="/cfp" role="button">Read and answer the Fri3d Camp 2018 CFP »</a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
 
 {% endblock %}
