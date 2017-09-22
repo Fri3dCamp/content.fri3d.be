@@ -1,7 +1,11 @@
 {% extends "main.html" %}
 {% block title %}Fri3d CFP{% endblock %}
 {% block moreCSS %}{% endblock %}
-{% block moreJS %}<script src="/static/js/cfp.js"></script>{% endblock %}
+{% block moreJS %}
+  <script src="/static/js/cfp.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/nl-en.js"></script>  
+{% endblock %}
 
 {% block content %}
 
@@ -9,36 +13,13 @@
   <input type="checkbox">
 </div>
 
-<!-- introduction -->
-
-<div class="i18n nl">
-  <h2>Fri3d Camp 2018: Uitnodiging tot deelname</h2>
-  <p>
-    TODO: toevoegen van beknopte "CFP tekst", cfr uitgestuurde tekst.
-  </p>
-</div>
-
-<div class="i18n en">
-  <h2>Fri3d Camp 2018: Call For Participation</h2>
-  <p>
-    TODO: toevoegen van beknopte "CFP tekst", cfr uitgestuurde tekst.
-  </p>
-</div>
+<div class="i18n" data-i18n="SUBMISSION_INTRO"></div>
 
 <!-- form -->
 
-<h3 class="i18n nl">Jouw Fri3d activiteit</h3>
-<h3 class="i18n en">Your Fri3d activity</h3>
+<h3 class="i18n" data-i18n="SUBMISSION_TITLE"></h3>
 
-<p class="i18n nl">
-  Activiteiten op Fri3d Camp kunnen zeer uiteen lopend van aard zijn.<br>
-  We delen ze in in drie grote categorieën:
-</p>
-
-<p class="i18n en">
-  Fri3d Camp activities can be of very diverse nature.<br>
-  We categorize them into three major groups:
-</p>
+<div class="i18n" data-i18n="SUBMISSION_DESC"></div>
 
 <div class="category row">
 
@@ -46,24 +27,10 @@
     <button type="button" class="btn btn-lg btn-block category unselected"
             data-category="presentation">
 
-      <h4 class="i18n nl">Presentatie</h4>
-      <h4 class="i18n en">Presentation</h4>
+      <h4 class="i18n" data-i18n="TYPE_PRESENTATION"></h4>
   
-      <p class="i18n nl">
-        Wil je het verhaal van jouw hacker passie delen met alle deelnemers,
-        jouw Open Source project voorstellen,... Dan hebben wij een volledig
-        uitgeruste zaal klaar staan. Het podium, en alle benodigde
-        ondersteuning is aanwezig!
-      </p>
+      <p class="i18n" data-i18n="TYPE_PRESENTATION_DESC"></p>
 
-      <p class="i18n en">
-        Do you want to tell your story, and share your hacker passion with the
-        other participants? Do you want to present your Open Source project?
-        Then we have a fully equipped auditorium ready for you. The stage and
-        all required support is present!
-      </p>
-
-  
     </button>
   </div>
 
@@ -72,22 +39,9 @@
             data-category="workshop">
   
 
-      <h4 class="i18n nl">Workshop</h4>
-      <h4 class="i18n en">Workshop</h4>
+      <h4 class="i18n" data-i18n="TYPE_WORKSHOP"></h4>
 
-      <p class="i18n nl">
-        Kunnen en/of moeten de deelnemers aan jouw activteit zelf de handen uit
-        de mouwen steken? Begeleid je hen gedurende jouw activiteit van niets
-        tot hun volgende wonderlijke creatie, dan helpen we je graag deze
-        workshop te realiseren.
-      </p>
-
-      <p class="i18n en">
-        Will participants of your activity have to roll up their sleeves and
-        get their hands dirty? Will you guide them from a vast nothing to a new
-        creation of their own making? We are here to help you get that workshop
-        on the road.
-      </p>
+      <p class="i18n" data-i18n="TYPE_WORKSHOP_DESC"></p>
 
     </button>
   </div>
@@ -96,21 +50,9 @@
     <button type="button" class="btn btn-lg btn-block category unselected"
             data-category="other">
 
-      <h4 class="i18n nl">Andere</h4>
-      <h4 class="i18n en">Other</h4>
+      <h4 class="i18n" data-i18n="TYPE_OTHER"></h4>
 
-      <p class="i18n nl">
-        Wil je kunstzinnig aan de slag gaan op het terrein, of wil je
-        entertainment van de bovenste plank brengen? Ook dat kan allemaal. We
-        hebben een groot terrein, en verschillende accomodaties ter beschikking.
-      </p>
-
-      <p class="i18n en">
-        Do you want to put up a piece of art on the terrain, or do you want to
-        bring entertainment to our stage? Anything is possible. We have a very
-        large camping ground with lots of possibilities and support for lots of
-        activities.
-      </p>
+      <p class="i18n" data-i18n="TYPE_OTHER_DESC"></p>
 
     </button>
   </div>
