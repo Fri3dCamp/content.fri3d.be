@@ -7,6 +7,16 @@
       'Looking for an English version of the form?'
     ],
 
+    // GENERAL LABELS
+    'TOGGLE_ON' : [
+      "Ja",
+      "Yes"
+    ],
+    'TOGGLE_OFF' : [
+      "Nee",
+      "No"
+    ],
+
     // INTRODUCTION
     'SUBMISSION_INTRO': [
       '<h1>Fri3d Camp 2018 - Uitnodiging tot Deelname</h1>\

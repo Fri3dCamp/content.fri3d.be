@@ -36,6 +36,14 @@ window.i18n = {};
         i18n_translate( $(this).attr("data-i18n"), translated )
       );
     });
+    // translate all toggles
+    $("input:checkbox.i18n").each(function() {
+      $(this).bootstrapToggle("destroy"); // needed ;-(
+      $(this).bootstrapToggle({
+        on:  i18n_translate("TOGGLE_ON",  translated),
+        off: i18n_translate("TOGGLE_OFF", translated)
+      })
+    });
   }
 
   // setup language based on hash
