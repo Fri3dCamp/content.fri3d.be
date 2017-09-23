@@ -41,3 +41,11 @@ $ . venv/bin/activate
 (venv) $ pip install -r requirements.txt
 (venv) $ python run.py
 ```
+
+## Dependencies
+
+* [Bootstrap](http://getbootstrap.com)
+* [Bootstrap Dialog](https://nakupanda.github.io/bootstrap3-dialog/)
+* [Bootstrap Toggle](http://www.bootstraptoggle.com)
+* [Font Awesome](http://fontawesome.io)
+* [Notify JS](https://notifyjs.com)
