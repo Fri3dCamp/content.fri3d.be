@@ -1,3 +1,6 @@
+// responsive support
+// TODO with new classes
+
 function cfp_select_category(button) {
   // "select" correct button
   $("BUTTON.category").removeClass("selected").addClass("unselected");
@@ -9,11 +12,10 @@ function cfp_select_category(button) {
   $("#form-"+category).show();
 }
 
-$( document ).ready(function() {
+// activate category buttons
 
-  // activate category buttons
+$( document ).ready(function() {
   $("BUTTON.category").click(function() {
     cfp_select_category(this);
   });
-  
 });

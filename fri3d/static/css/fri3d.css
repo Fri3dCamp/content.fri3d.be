@@ -130,3 +130,7 @@ button.category.selected {
 DIV.details {
   display:none;
 }
+
+i.action-icon {
+  font-size: 150%;
+}

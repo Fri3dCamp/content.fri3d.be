@@ -64,6 +64,10 @@ window.i18n = {};
     }
   }
 
+  function i18n_needs_translation() {
+    return $("#language").prop("checked");
+  }
+
   // exposed setter for languages and translations
 
   i18n.learn = function i18n_learn(langs, trans) {
@@ -76,7 +80,7 @@ window.i18n = {};
 
     // setup languages + init toggle button
     languages = langs;
-    $('.i18n.toggle INPUT').bootstrapToggle({
+    $('#language').bootstrapToggle({
       off: languages[0].toUpperCase(),
       on:  languages[1].toUpperCase()
     });
@@ -88,21 +92,26 @@ window.i18n = {};
     var translated = window.location.hash.indexOf("l:" + languages[1]) > -1;
     // add additional notification to catch attention for other language
     setTimeout(function() {
-      $.notify( $(".i18n.toggle"), i18n_translate("LANGUAGE_PROMPT", ! translated), {
+      $.notify( $("#language-container"), i18n_translate("LANGUAGE_PROMPT", ! translated), {
         className    : "info",
         position     : "bottom center",
         autoHideDelay: 3000
       });
     }, 1000);
-    $('.i18n.toggle INPUT').bootstrapToggle(translated ? "on" : "off");
+    $('#language').bootstrapToggle(translated ? "on" : "off");
     
     i18n_show(translated);
 
     // trigger translation on toggle
-    $('.i18n.toggle INPUT').change( function(){
+    $('#language').change( function(){
       i18n_apply_translation( this.checked );
     });
   }
 
+  // exposed function to get a key in the current language
+
+  i18n.get = function i18n_get(key) {
+    return i18n_translate(key, i18n_needs_translation() );
+  }
 
 })(window.i18n);
