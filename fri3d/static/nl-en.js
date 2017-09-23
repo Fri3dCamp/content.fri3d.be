@@ -151,7 +151,7 @@
       'I am available throughout the entire Fri3d Camp weekend to deliver my activity'
     ],
     'AVAILABILITY_SECTION_TITLE': [
-      'Jouw bechikbaarheid',
+      'Jouw beschikbaarheid',
       'Your availability'
     ],
     'AVAILABILITY_SECTION_SUMMARY': [
