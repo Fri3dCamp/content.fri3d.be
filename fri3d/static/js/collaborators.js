@@ -59,6 +59,8 @@ window.collaborators = {};
           }
         },{
           label: i18n.get( "COLLABORATORS_DIALOG_ADD_CONFIRM" ),
+          cssClass: 'btn-primary',
+          hotkey: 13,
           action: function(dialog) {
             add($("#collaborator-name").val(), $("#collaborator-email").val());
             dialog.close();
@@ -84,6 +86,8 @@ window.collaborators = {};
           }
         },{
           label: i18n.get( "COLLABORATORS_DIALOG_REMOVE_CONFIRM" ),
+          cssClass: 'btn-primary',
+          hotkey: 13,
           action: function(dialog) {
             remove(name);
             dialog.close();
