@@ -31,7 +31,7 @@
 <div class="category row">
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <button type="button" class="btn btn-lg btn-block category unselected"
+    <button type="button" class="btn btn-lg btn-block category presentation"
             data-category="presentation">
 
       <h4 class="i18n" data-i18n="TYPE_PRESENTATION"></h4>
@@ -42,7 +42,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <button type="button" class="btn btn-lg btn-block category unselected"
+    <button type="button" class="btn btn-lg btn-block category workshop"
             data-category="workshop">
   
 
@@ -54,7 +54,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <button type="button" class="btn btn-lg btn-block category unselected"
+    <button type="button" class="btn btn-lg btn-block category other"
             data-category="other">
 
       <h4 class="i18n" data-i18n="TYPE_OTHER"></h4>
@@ -114,7 +114,7 @@
   
   <div class="form-group">
 
-    <input type="checkbox" class="i18n" data-toggle="toggle" data-size="mini">
+    <input type="checkbox" class="i18n responsive" data-responsive="affiliated" data-toggle="toggle" data-size="mini">
     <span class="i18n" data-i18n="AFFILIATED"></span>
     
     <div class="when-affiliated">
@@ -125,7 +125,7 @@
 
   </div>
   
-  <div class="form-group">
+  <div class="form-group when-workshop">
 
     <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini">
     <span class="i18n" data-i18n="REPETITION_OPTION"></span>
@@ -134,7 +134,7 @@
 
   <div class="form-group">
 
-    <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini">
+    <input type="checkbox" class="i18n responsive" data-responsive="always-available" checked data-toggle="toggle" data-size="mini">
     <span class="i18n" data-i18n="AVAILABILITY_ALWAYS"></span>
   
     <div class="when-not-always-available">
@@ -194,8 +194,6 @@
 
       </div>
   
-    </div>
-
       <div class="row">
 
         <div class="form-group col-md-3">
@@ -229,7 +227,7 @@
     
     <h2 class="i18n" data-i18n="AUDIENCE_SECTION_TITLE"></h2>
     
-    <div class="row">
+    <div class="row when-workshop">
       <div class="form-group col-md-6">
 
         <label for="audience-amount" class="i18n" data-i18n="AMOUNT_AUDIENCE"></label>
@@ -241,10 +239,10 @@
     
     <div class="form-group">
 
-      <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini">
+      <input type="checkbox" class="i18n responsive" data-responsive="all-audiences" checked data-toggle="toggle" data-size="mini">
       <span class="i18n" data-i18n="AUDIENCE_ALL"></span>
 
-      <div class="when-not-all-audience">
+      <div class="when-not-all-audiences">
 
         <p class="i18n" data-i18n="AUDIENCE_SECTION_SUMMARY"></p>
 
@@ -268,9 +266,9 @@
 
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group when-workshop">
       
-      <input type="checkbox" class="i18n" data-toggle="toggle" data-size="mini">
+      <input type="checkbox" class="i18n responsive" data-responsive="costs" data-toggle="toggle" data-size="mini">
       <span class="i18n" data-i18n="COSTS_REQUIRED"></span>
       
       <div class="when-costs">
@@ -298,9 +296,9 @@
       </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group when-workshop">
       
-      <input type="checkbox" class="i18n" data-toggle="toggle" data-size="mini">
+      <input type="checkbox" class="i18n responsive" data-responsive="walk-in" data-toggle="toggle" data-size="mini">
       <span class="i18n" data-i18n="ACTIVITY_FORMAT_LABEL"></span>
       
       <div class="when-walk-in">
@@ -318,12 +316,12 @@
       
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group when-workshop">
       
-      <input type="checkbox" class="i18n" data-toggle="toggle" data-size="mini">
+      <input type="checkbox" class="i18n responsive" data-responsive="multiple-sessions" data-toggle="toggle" data-size="mini">
       <span class="i18n" data-i18n="ACTIVITY_SESSIONS_MULTIPLE"></span>
       
-      <div class="when-walk-in">
+      <div class="when-multiple-sessions">
 
         <div class="form-group col-md-6">
 

@@ -1,21 +1,32 @@
-// responsive support
-// TODO with new classes
+// responsive support: active elements (toggles and buttons) can push classes
+//                     to the form
+// in CSS we can now write rules to change the display property to create
+// responsive disclosure tricks
 
-function cfp_select_category(button) {
-  // "select" correct button
-  $("BUTTON.category").removeClass("selected").addClass("unselected");
-  $(button).removeClass("unselected").addClass("selected");
-  
-  // show corresponding form part
-  var category = $(button).data("category");
-  $("DIV.details").hide();
-  $("#form-"+category).show();
-}
+(function() {
+  $( document ).ready(function() {
 
-// activate category buttons
+    // checkboxes/toggles do this on "change"
+    $("input:checkbox").each(function(index) {
+      if( $(this).attr("data-responsive") ) {
+        // if currently checked, we need to perform it now also
+        if(this.checked) { $("form").addClass($(this).data("responsive")); }
+        // and on change
+        $(this).change(function() {
+          $("form").removeClass($(this).data("responsive"));
+          if(this.checked ) {
+            $("form").addClass($(this).data("responsive"));            
+          }
+        });
+      }
+    });
 
-$( document ).ready(function() {
-  $("BUTTON.category").click(function() {
-    cfp_select_category(this);
+    // buttons do this on "click"
+    $("button.category").click(function() {
+      $("form").removeClass("presentation workshop other")
+               .addClass($(this).data("category"));
+    });
+
   });
-});
+
+})();

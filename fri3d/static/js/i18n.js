@@ -31,6 +31,7 @@ window.i18n = {};
 
   function i18n_show(translated) {
     console.log("showing " + languages[ translated ? TRANSLATED : DEFAULT ]);
+    // update all i18n-enabled fields
     elements.each(function(index) {
       $(this).html(
         i18n_translate( $(this).attr("data-i18n"), translated )
@@ -44,6 +45,9 @@ window.i18n = {};
         off: i18n_translate("TOGGLE_OFF", translated)
       })
     });
+    // mark the document transated or not
+    $("BODY").removeClass("translated");
+    if( translated ) { $("BODY").addClass("translated"); }
   }
 
   // setup language based on hash

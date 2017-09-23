@@ -108,29 +108,126 @@ IMG.logo {
   border-radius: 50%;
 }
 
-/* some styling additions for the CFP form */
+/* CFP form styling */
+
+i.action-icon {
+  font-size: 150%;
+}
+
+/* responsiveness through CSS */
+
+/* language dependence */
+
+.when-translated {
+  display: none;
+}
+
+BODY.translated .when-translated {
+  display: block;
+}
+
+/* category/type buttons */
 
 button.category {
-  white-space: normal;
-  margin-bottom: 15px;
-  height:100%;
-}
-
-button.category.unselected {
+  white-space:      normal;
+  margin-bottom:    15px;
+  height:           100%;
   background-color: white;
-  border: 1px solid gray;
+  border:           1px solid gray;
 }
 
-button.category.selected {
+form.presentation button.category.presentation,
+form.workshop     button.category.workshop,
+form.other        button.category.other
+{
   background-color: #337ab7;
   border-color: #2e6da4;
   color: white;
 }
 
-DIV.details {
-  display:none;
+.when-have-type {
+  display: none;
 }
 
-i.action-icon {
-  font-size: 150%;
+form.presentation .when-have-type,
+form.workshop     .when-have-type,
+form.other        .when-have-type
+{
+  display: block;
+}
+
+.when-not-presentation {
+  display: block;
+}
+
+form.presentation .when-not-presentation {
+  display: none;
+}
+
+.when-workshop {
+  display: none;
+}
+
+form.workshop .when-workshop {
+  display: block;
+}
+
+/* affiliation */
+
+.when-affiliated {
+  display: none;
+}
+
+form.affiliated .when-affiliated {
+  display: block;
+}
+
+/* availability */
+
+.when-not-always-available {
+  display: block;
+}
+
+form.always-available .when-not-always-available {
+  display: none;
+}
+
+/* all audiences */
+
+.when-not-all-audiences {
+  display: block;
+}
+
+form.all-audiences .when-not-all-audiences {
+  display: none;
+}
+
+/* costs */
+
+.when-costs {
+  display: none;
+}
+
+form.costs .when-costs {
+  display: block;
+}
+
+/* walk in */
+
+.when-walk-in {
+  display: none;
+}
+
+form.walk-in .when-walk-in {
+  display: block;
+}
+
+/* multiple sessions */
+
+.when-multiple-sessions {
+  display: none;
+}
+
+form.multiple-sessions .when-multiple-sessions {
+  display: block;
 }
