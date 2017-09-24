@@ -120,6 +120,11 @@ p {
   background-color: #0E98AF;
 }
 
+div.modal.bootstrap-dialog div.modal-dialog div.modal-content div.modal-header,
+div.bootstrap-dialog-header {
+  background-color: #0E98AF;
+}
+
 i.action-icon {
   font-size: 150%;
 }
