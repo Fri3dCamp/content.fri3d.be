@@ -41,11 +41,11 @@ window.collaborators = {};
     var message = $('<div></div>');
     message.append('<div class="form-group">\
       <label for="collaborator-name">' + i18n.get("NAME") + '</label>\
-      <input class="form-control" id="collaborator-name">\
+      <input class="form-control fri3d-input" id="collaborator-name">\
     </div>\
     <div class="form-group">\
       <label for="collaborator-email">' + i18n.get("EMAIL") + '</label>\
-      <input type="email" class="form-control" id="collaborator-email">\
+      <input type="email" class="form-control fri3d-input" id="collaborator-email">\
     </div>');
 
     BootstrapDialog.show({
