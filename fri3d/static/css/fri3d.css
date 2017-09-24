@@ -10,6 +10,21 @@ body {
   border: 0;
 }
 
+.navbar {
+  height: 65px;
+  background-image: url("/static/images/header_forest.jpg");
+}
+
+div#navbar a,
+.navbar-inverse .navbar-brand {
+  color: rgba(255, 255, 255, 0.870588);
+}
+
+div#navbar a {
+  padding-top: 20px;
+  text-transform: uppercase;  
+}
+
 IMG.logo {
   margin-top: -4px;
 }
