@@ -116,6 +116,10 @@ p {
   box-shadow: none
 }
 
+.btn-primary {
+  background-color: #0E98AF;
+}
+
 i.action-icon {
   font-size: 150%;
 }
