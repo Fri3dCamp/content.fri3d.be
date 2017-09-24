@@ -22,9 +22,12 @@
     });
 
     // buttons do this on "click"
-    $("button.category").click(function() {
+    $("div.category").click(function() {
       $("form").removeClass("presentation workshop other")
                .addClass($(this).data("category"));
+      // select selected button/div
+      $("div.category").removeClass("selected");
+      $(this).addClass("selected");
     });
 
   });
