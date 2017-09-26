@@ -1,7 +1,7 @@
 /* move down content because we have a fixed navbar that is 50px tall */
 
 body {
-  padding-top: 50px;
+  padding-top: 65px;
 }
 
 /* navigation */
@@ -11,7 +11,7 @@ body {
 }
 
 .navbar {
-  height: 65px;
+  height: 64px;
   background-image: url("/static/images/header_forest.jpg");
 }
 
@@ -25,25 +25,31 @@ div#navbar a {
   text-transform: uppercase;  
 }
 
-IMG.logo {
-  margin-top: -4px;
+a.navbar-brand {
+  margin: 0px;
+  padding: 0px;
 }
 
-/* main content */
-
-.main {
-  padding: 20px;
+.logo-header {
+  margin: 12px;
 }
 
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
+.logo-header .logo {
+  margin-right: 35px;
 }
 
-.main .page-header {
-  margin-top: 0;
+.logo-header {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.logo-header .subtitle {
+  font-size: 80%;
+}
+
+.navbar li {
+  font-size: 14px;
 }
 
 /* CFP form styling */
@@ -56,6 +62,10 @@ body {
 
 body {
   font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: normal;
+  -webkit-box-direction: normal;
+  -webkit-font-smoothing: antialiased;
 }
 
 input,
@@ -68,13 +78,13 @@ textarea {
 }
 
 @media (min-width: 700px) {
-  .mainwrapper {
+  .cfp {
     padding-left:10%;
     padding-right:10%
   }
 }
 @media (min-width: 1200px) {
-  .mainwrapper {
+  .cfp {
     padding-left:20%;
     padding-right:20%
   }
@@ -131,10 +141,6 @@ p {
   box-shadow: none
 }
 
-.btn-primary {
-  background-color: #0E98AF;
-}
-
 div.modal.bootstrap-dialog div.modal-dialog div.modal-content div.modal-header,
 div.bootstrap-dialog-header {
   background-color: #0E98AF;
@@ -154,6 +160,21 @@ div.download.pdf {
 
 div.download.pdf.left {
   float: left;
+}
+
+div.download.pdf.small {
+  width: auto;
+  margin: 0px;
+  font-size: 100%;
+}
+
+div.download.pdf.small IMG {
+  height: 30px;
+  margin-bottom: 3px;
+}
+
+div.download.pdf.small a {
+  color: white;
 }
 
 @media only screen and (min-width : 768px) {
@@ -189,4 +210,138 @@ div.download.pdf.left {
 
 .category:hover {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+/* domain root page (default) cards stylinh */
+
+.default {
+  padding: 0px;
+  margin: 0px;
+}
+
+.cards {
+  margin: 25px;
+}
+
+@media only screen and (max-width: 40.063em) {
+  .cards {
+    margin: 10px;
+  }
+}
+
+.card-block {
+  padding: 15px;
+}
+
+.card {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: .25rem
+}
+
+.card.light {
+  background-color: #00C9D2;
+}
+
+.card.dark {
+  background-color: #006F7D;
+  color: #fff;
+}
+
+.card-title {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+.card-subtitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+
+.card-date {
+  font-size: 80%;
+  margin-top: 15px;
+  float: right;
+  color: #d3d3d3;
+}
+
+img.card-img-right {
+  width: 80px;
+  height: 80px;
+  float: right;
+}
+
+.card .card-text a {
+  color: white;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.card.tweet {
+  padding: 5px;
+}
+
+/* buttons */
+
+.btn-primary {
+  background-color: #0E98AF;
+  border-color: #0E98AF;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.btn-primary:hover {
+  background-color: #0E98AF;
+  border-color: #0E98AF;
+}
+
+.btn-primary:active {
+  background-color: #0E98AF;
+  border-color: #0E98AF;
+}
+
+a.btn-primary:hover {
+  background-color: #06D7E0;
+  border-color: #06D7E0;
+}
+
+a.btn-primary:active {
+  background-color: #06D7E0;
+  border-color: #06D7E0;
+}
+
+/* dark themed card */
+
+.dark.card a.btn-primary {
+  background-color: #00C9D2;
+  border-color: #00C9D2;
+  color: black;
+}
+
+a.btn {
+  text-transform: uppercase;  
+  padding: 20px;
+}
+
+.btn-icon {
+  height: 25px;
+  margin-bottom: -6px;
+  margin-left: 10px;
+}
+
+.svg path {
+  fill: white;
+}
+
+/* toggles */
+
+label.btn-xs {
+  font-size: 11px;
+}
+
+.toggle-off.btn-xs {
+  padding-left: 8px;
 }
