@@ -5,7 +5,11 @@ window.submission = {};
 (function(submission) {
 
   submission.submit = function submit() {
-    alert("TODO");
+    var form = $('#form_cfp')[0];
+    if (!form.checkValidity()) {
+      form.reportValidity();
+    }
+    // backend things
   }
 
   submission.validate = function validate() {
