@@ -14,6 +14,16 @@ $('#cfp_form').validator().on('submit', function(e) {
   window.submission.submit();
 });
 
+// show/hide error message close to submit button
+
+$("#cfp_form").validator().on("validated.bs.validator", function(e) {
+  if( $(this).data('bs.validator').hasErrors() ) {
+    $("#errors").show();
+  } else {
+    $("#errors").hide();
+  }
+});
+
 // validate length of all textarea
 
 $( document ).ready(function() {
