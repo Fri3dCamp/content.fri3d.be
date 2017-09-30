@@ -28,6 +28,7 @@
       // select selected button/div
       $("div.category").removeClass("selected");
       $(this).addClass("selected");
+      $("#title").focus();
     });
 
   });
