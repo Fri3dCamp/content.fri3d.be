@@ -379,7 +379,7 @@
                 <div class="message triangle-border left">
                   <textarea class="form-control fri3d-input" rows="3" style="width:100%;height:100%;"></textarea>
                   <p align="right" style="margin-top:3px;">
-                    <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add(); return false;"></span>
+                    <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add('author', this.parentElement.parentElement.children[0]); return false;"></span>
                   </p>
                 </div>
               </div>
@@ -389,10 +389,13 @@
                 <div class="message triangle-border right">
                   <textarea class="form-control fri3d-input" rows="3" style="width:100%;height:100%"></textarea>
                   <p align="right" style="margin-top:3px;">
-                    <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add(); return false;"></span>
+                    <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add('fri3d', this.parentElement.parentElement.children[0]); return false;"></span>
                   </p>
                 </div>
               </div>
+
+              <div class="archive"></div>
+
             </div>
 
           </div>
