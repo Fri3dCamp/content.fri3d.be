@@ -355,3 +355,20 @@ label.btn-xs {
 .remaining.invalid {
   color: #af4244;
 }
+
+/* error message styling */
+
+#errors {
+  color: rgb(255, 87, 34);
+}
+
+#errors p {
+  padding-bottom: 0px; /* reset */
+}
+
+#errors div {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  padding: 10px;
+}
