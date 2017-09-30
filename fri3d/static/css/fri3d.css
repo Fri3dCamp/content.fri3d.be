@@ -345,3 +345,13 @@ label.btn-xs {
 .toggle-off.btn-xs {
   padding-left: 8px;
 }
+
+/* validation */
+
+.remaining {
+  font-size: 80%;
+}
+
+.remaining.invalid {
+  color: #af4244;
+}
