@@ -33,9 +33,12 @@ window.i18n = {};
     console.log("showing " + languages[ translated ? TRANSLATED : DEFAULT ]);
     // update all i18n-enabled fields
     elements.each(function(index) {
-      $(this).html(
-        i18n_translate( $(this).attr("data-i18n"), translated )
-      );
+      var text = i18n_translate( $(this).attr("data-i18n"), translated );
+      if($(this).is( ":submit" )) {
+        $(this).val(text);
+      } else {
+        $(this).html(text);
+      }
     });
     // translate all toggles
     $("input:checkbox.i18n").each(function() {
