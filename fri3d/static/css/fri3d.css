@@ -346,6 +346,21 @@ label.btn-xs {
   padding-left: 8px;
 }
 
+.toggle {
+  margin-right: 6px;
+}
+
+input.choice {
+  margin-right: 6px;
+}
+
+.toggle + span {
+  display: block;
+  margin-left: 50px;
+  margin-top: -22px;
+}
+
+
 /* validation */
 
 .remaining {
