@@ -392,6 +392,10 @@ input.choice {
   padding: 10px;
 }
 
+#errors div.fa-warning {
+  font-size: 20pt;
+}
+
 #submit {
   margin-top: 20px;
   clear: both;
