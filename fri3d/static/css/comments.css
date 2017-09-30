@@ -1,0 +1,117 @@
+#comments {
+  margin-top: 25px;
+  display: none;
+}
+
+.comment.author .author {
+  float: left;
+}
+
+.comment.fri3d .author {
+  float: right;
+}
+
+.comment.author .message {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.comment.fri3d .message {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.author img {
+  max-height: 75px;
+  max-width: 75px;
+}
+
+.comment p {
+  padding-bottom: 0px; /* reset */
+}
+
+/*
+  bubble design entirely in css:
+  respectfully extracted from
+  http://nicolasgallagher.com/pure-css-speech-bubbles/demo/default.css
+*/
+
+.triangle-border {
+  position:relative;
+  padding:15px;
+  margin:1em 0 3em;
+  border:5px solid #006E7F;
+  color:#333;
+  background:#fff;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+.triangle-border.left {
+  margin-left:30px;
+}
+
+.triangle-border.right {
+  margin-right:30px;
+}
+
+.triangle-border:before {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:40px; /* controls horizontal position */
+  border-width:20px 20px 0;
+  border-style:solid;
+  border-color:#006E7F transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+.triangle-border:after {
+  content:"";
+  position:absolute;
+  bottom:-13px; /* value = - border-top-width - border-bottom-width */
+  left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width:13px 13px 0;
+  border-style:solid;
+  border-color:#fff transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+.triangle-border.left:before {
+  top:10px; /* controls vertical position */
+  bottom:auto;
+  left:-30px; /* value = - border-left-width - border-right-width */
+  border-width:15px 30px 15px 0;
+  border-color:transparent #006E7F;
+}
+
+.triangle-border.left:after {
+  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom:auto;
+  left:-21px; /* value = - border-left-width - border-right-width */
+  border-width:9px 21px 9px 0;
+  border-color:transparent #fff;
+}
+
+.triangle-border.right:before {
+  top:10px; /* controls vertical position */
+  bottom:auto;
+  left:auto;
+  right:-30px; /* value = - border-left-width - border-right-width */
+  border-width:15px 0 15px 30px;
+  border-color:transparent #006E7F;
+}
+
+.triangle-border.right:after {
+  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom:auto;
+  left:auto;
+  right:-21px; /* value = - border-left-width - border-right-width */
+  border-width:9px 0 9px 21px;
+  border-color:transparent #fff;
+}

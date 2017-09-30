@@ -115,3 +115,29 @@ form.walk-in .when-walk-in {
 form.multiple-sessions .when-multiple-sessions {
   display: block;
 }
+
+/* comments */
+
+.when-comments {
+  display: none;
+}
+
+form.comments .when-comments {
+  display: block;
+}
+
+.when-author {
+  display: none;
+}
+
+form.author .when-author {
+  display: block;
+}
+
+.when-fri3d {
+  display: none;
+}
+
+form.fri3d .when-fri3d {
+  display: block;
+}
