@@ -372,3 +372,8 @@ label.btn-xs {
   vertical-align: middle;
   padding: 10px;
 }
+
+#submit {
+  margin-top: 20px;
+  clear: both;
+}
