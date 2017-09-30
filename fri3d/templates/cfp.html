@@ -62,15 +62,16 @@
           <div class="form-group">
 
             <label for="title" class="i18n" data-i18n="TITLE"></label>
-      <input class="form-control fri3d-input" type="text" id="title" name="title" required>
-    </div>
-    <div class="form-group">
+            <input class="form-control fri3d-input" type="text" id="title" name="title" required>
+          </div>
 
+          <div class="form-group">
 
             <label for="summary" class="i18n" data-i18n="SUMMARY"></label>
             <textarea class="form-control fri3d-input" type="text" id="summary" name="summary" rows="5" required data-max-chars="350"></textarea>
-    </div>
-    <div class="form-group">
+          </div>
+
+          <div class="form-group">
             <div class="when-translated">
               <input type="checkbox" class="i18n" data-toggle="toggle" data-size="mini">
               <span class="i18n" data-i18n="LANGUAGE_SUPPORT_OPTION"></span>
@@ -112,7 +113,7 @@
             <input type="checkbox" class="i18n responsive" data-responsive="affiliated" data-toggle="toggle" data-size="mini">
             <span class="i18n" data-i18n="AFFILIATED"></span>
     
-            <div class="when-affiliated">
+            <div class="when-affiliated more">
               <label for="affiliation" class="i18n" data-i18n="ASSOCIATED"></label>
               <input class="form-control fri3d-input" id="affiliation" name="speaker_associated_hackerspaces">
               <span class="i18n hint" data-i18n="ASSOCIATED_HINT"></span>
@@ -132,7 +133,7 @@
             <input type="checkbox" class="i18n responsive" data-responsive="always-available" checked data-toggle="toggle" data-size="mini" name="always_available">
             <span class="i18n" data-i18n="AVAILABILITY_ALWAYS"></span>
   
-            <div class="when-not-always-available">
+            <div class="when-not-always-available more">
 
               <h2 class="i18n" data-i18n="AVAILABILITY_SECTION_TITLE"></h2>
       
@@ -141,21 +142,21 @@
 
               <div class="row">
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini" name="day_1_available">
                   <span class="i18n" data-i18n="DAY_ONE"></span>
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="from-1" class="i18n" data-i18n="FROM"></label>
                   <input class="form-control fri3d-input" id="from-1" value="9" name="day_1_from">
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="until-1" class="i18n" data-i18n="UNTIL"></label>
                   <input class="form-control fri3d-input" id="until-1" value="21" name="day_1_until">
@@ -166,21 +167,21 @@
 
               <div class="row">
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini" name="day_2_available">
                   <span class="i18n" data-i18n="DAY_TWO"></span>
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="from-2" class="i18n" data-i18n="FROM"></label>
                   <input class="form-control fri3d-input" id="from-2" value="9" name="day_2_from">
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="until-2" class="i18n" data-i18n="UNTIL"></label>
                   <input class="form-control fri3d-input" id="until-2" value="21" name="day_2_until">
@@ -191,21 +192,21 @@
   
               <div class="row">
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <input type="checkbox" class="i18n" checked data-toggle="toggle" data-size="mini" name="day_3_available">
                   <span class="i18n" data-i18n="DAY_THREE"></span>
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="from-3" class="i18n" data-i18n="FROM"></label>
                   <input class="form-control fri3d-input" id="from-3" value="9" name="day_3_from">
 
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
 
                   <label for="until-3" class="i18n" data-i18n="UNTIL"></label>
                   <input class="form-control fri3d-input" id="until-3" value="21" name="day_3_until">
@@ -237,7 +238,7 @@
               <input type="checkbox" class="i18n responsive" data-responsive="all-audiences" checked data-toggle="toggle" data-size="mini" name="open_for_all">
               <span class="i18n" data-i18n="AUDIENCE_ALL"></span>
 
-              <div class="when-not-all-audiences">
+              <div class="when-not-all-audiences more">
 
                 <p class="i18n" data-i18n="AUDIENCE_SECTION_SUMMARY"></p>
 
@@ -266,7 +267,7 @@
               <input type="checkbox" class="i18n responsive" data-responsive="costs" data-toggle="toggle" data-size="mini" name="requires_pay">
               <span class="i18n" data-i18n="COSTS_REQUIRED"></span>
       
-              <div class="row when-costs">
+              <div class="row when-costs more">
 
                 <div class="form-group col-md-6">
 
@@ -296,7 +297,7 @@
               <input type="checkbox" class="i18n responsive" data-responsive="walk-in" data-toggle="toggle" data-size="mini" name="format">
               <span class="i18n" data-i18n="ACTIVITY_FORMAT_LABEL"></span>
       
-              <div class="row when-walk-in">
+              <div class="row when-walk-in more">
 
                 <div class="form-group col-md-6">
 
@@ -316,7 +317,7 @@
               <input type="checkbox" class="i18n responsive" data-responsive="multiple-sessions" data-toggle="toggle" data-size="mini" name="multiple_sessions">
               <span class="i18n" data-i18n="ACTIVITY_SESSIONS_MULTIPLE"></span>
       
-              <div class="row when-multiple-sessions">
+              <div class="row when-multiple-sessions more">
 
                 <div class="form-group col-md-6">
 

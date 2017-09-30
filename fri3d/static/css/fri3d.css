@@ -126,6 +126,10 @@ p {
     line-height: 1.2em;
 }
 
+.more {
+  margin-top: 5px;
+}
+
 .fri3d-input {
   background-color: #E4F1F5;
   border: 0px;
