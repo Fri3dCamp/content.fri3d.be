@@ -49,3 +49,4 @@ $ . venv/bin/activate
 * [Bootstrap Toggle](http://www.bootstraptoggle.com)
 * [Font Awesome](http://fontawesome.io)
 * [Notify JS](https://notifyjs.com)
+* [Bootstrap Validator](http://1000hz.github.io/bootstrap-validator/)
