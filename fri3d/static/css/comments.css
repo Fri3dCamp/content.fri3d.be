@@ -26,6 +26,23 @@
   max-width: 75px;
 }
 
+@media only screen and (max-width: 40.063em) {
+  .comment.author .message {
+    margin-left: 55px;
+    margin-right: 15px;
+  }
+
+  .comment.fri3d .message {
+    margin-left: 15px;
+    margin-right: 55px;
+  }
+
+  .author img {
+    max-height: 45px;
+    max-width: 45px;
+  }
+}
+
 .comment p {
   padding-bottom: 0px; /* reset */
 }
