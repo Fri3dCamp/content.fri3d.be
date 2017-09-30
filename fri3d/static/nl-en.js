@@ -346,6 +346,11 @@
     ],
 
     // COMMENTS
+    
+    'COMMENTS' : [
+      'Je kan nog verdere commentaar of vragen toevoegen, wij zullen dat ook misschien wel doen ;-)',
+      'You can add more comments or questions here, something we might do too ;-)'
+    ],
     'MESSAGE': [
       'Jouw bericht',
       'Your message'
