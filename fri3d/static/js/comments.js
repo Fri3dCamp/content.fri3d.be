@@ -39,9 +39,12 @@ window.comments = {};
   }
 
   function render(comment) {
-    var who  = "author",
-        icon = "author.png",
-        pos  = "left";
+    var who     = "author",
+        icon    = "author.png",
+        pos     = "left",
+        // TODO extend minimal markup support
+        //      look into simple Markdown support?
+        message = comment.message.split("\n").join("<br>\n");
     if( comment.who == "fri3d" ) {
       who  = "fri3d";
       icon = "author-fri3d.png";
@@ -51,7 +54,7 @@ window.comments = {};
 <div class="comment ' + who + '">\
   <div class="author"><img src="/static/images/' + icon + '"></div>\
   <div class="message triangle-border ' + pos + '">\
-    <p>' + comment.message + '</p>\
+    <p>' + message + '</p>\
   </div>\
 </div>'
     );
