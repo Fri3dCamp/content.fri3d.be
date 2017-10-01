@@ -94,8 +94,21 @@ window.submission = {};
     }, 1000);
   }
 
+  submission.get_id = function get_id() {
+    // TODO replace with actual submission id extraction from e.g. URL
+    var parts = window.location ? window.location.hash.substr(1).split(",") : [];
+    var id = null;
+    $(parts).each(function(index) {
+      var parts = this.split(":");
+      if(parts[0] == "s") {
+        id = parts[1];
+      }
+    });
+    return id;
+  };
+
   submission.submit = function submit() {
     post(collect());
-  }
+  };
 
 })(window.submission);

@@ -59,14 +59,14 @@ window.comments = {};
   ];
 
   function fetch(handler) {
-    var id = get_current_submission_id();
+    var id = submission = get_id();
     // TODO fetch comments the (submission) id
     //      implemented asyncly to be closer to future impl ;-)
     setTimeout( function() { handler(data); }, 1000);
   }
 
   function post(author, comment, handler) {
-    var id = get_current_submission_id();
+    var id = submission.get_id();
     // TODO post to backend in stead of add to local dummy data
     //      implemented asyncly to be closer to future impl ;-)
     // TODO we shouldn't rely on this author information, we _should_ check
@@ -80,11 +80,6 @@ window.comments = {};
     }
     data.unshift({ "who": author, "message": comment });
     setTimeout( handler, 1000 );
-  }
-
-  function get_current_submission_id() {
-    // TODO here, or elsewhere, determine current submission id
-    return "dummy";
   }
 
   function expand_details() {

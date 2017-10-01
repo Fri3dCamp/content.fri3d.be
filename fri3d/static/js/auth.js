@@ -13,9 +13,7 @@ window.auth = {};
   function show_comments() {
     // TODO replace with actual check for viewing in stead of submitting
     //      currently checks for availability of s:123 in location hash
-    var parts = window.location ? window.location.hash.substr(1).split(",") : [];
-    var idx = parts.indexOf("s:123");
-    return idx > -1;
+    return submission.get_id();
   }
   
   $(document).ready(function() {
