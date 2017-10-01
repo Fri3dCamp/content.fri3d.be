@@ -359,6 +359,10 @@
       'Verstuur',
       'Send'
     ],
+    'MORE': [
+      'meer',
+      'more'
+    ],
 
     // SAVED DIALOG
     'SAVED_DIALOG_HEADER' : [
