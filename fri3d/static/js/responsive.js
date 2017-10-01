@@ -3,9 +3,26 @@
 // in CSS we can now write rules to change the display property to create
 // responsive disclosure tricks
 
-(function() {
-  $( document ).ready(function() {
+window.responsive = {};
 
+(function(responsive) {
+  
+  function initialize() {
+    // start from a basic reset, just to be sure
+    
+    // clear responsive trigger classes
+    $("form").removeClass();
+
+    // remove additional class on category buttons
+    $("div.category").removeClass("selected");
+
+    // it seems that the sub-toggles on availability aren't reset to checked
+    $(".when-not-always-available input:checkbox").each(function(index) {
+      $(this).bootstrapToggle('on');
+    });
+
+    // setup repsonsive behaviour
+    
     // checkboxes/toggles do this on "change"
     $("input:checkbox").each(function(index) {
       if( $(this).attr("data-responsive") ) {
@@ -30,7 +47,11 @@
       $(this).addClass("selected");
       $("#title").focus();
     });
+  }
 
-  });
+  $( document ).ready(initialize);
+  
+  // export initialize function for reset purposes
+  responsive.initialize = initialize;
 
-})();
+})(window.responsive);

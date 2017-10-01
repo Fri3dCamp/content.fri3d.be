@@ -6,7 +6,6 @@ $(document).ready(function() {
     custom: {
       'max-chars': function($el) {
         var max = $el.data('max-chars');
-        console.log($el + " " + max + " " + $el.val().length);
         if ($el.val().length > max) {
           return "Te lang!";
         }
@@ -66,9 +65,52 @@ $( document ).ready(function() {
 window.submission = {};
 
 (function(submission) {
+  
+  function reset_form() {
+    // clear form fields
+    $("form")[0].reset();
+    // TODO check if this is enough?! e.g. toggles? default values?...
+    // do a (re)init of the responsive behaviors
+    responsive.initialize();
+  }
+
+  function collect() {
+    // TODO maybe do this manually, rewriting?, add interpretation?
+    //      or do that at BE?
+    var data = {};
+    $("#cfp_form").serializeArray().map(function(x){data[x.name] = x.value;});
+    return data;
+  }
+
+  // TODO extract into seperate module ?
+  $.notify.addStyle( "general", {
+    html: 
+      "<div>" +
+        "<div class='clearfix'>" +
+          "<div class='message' data-notify-html='message'/>" +
+        "</div>" +
+      "</div>"
+  });
+
+  function post(data) {
+    // TODO implement actual network posting
+    console.log("posting", data);
+    // TODO async behavior to match future actual post
+    setTimeout(function() {
+      // TODO notify of sucess _and_ failure ;-)
+      $.notify({
+        message: i18n.get("SAVED_DIALOG_CONTENTS"),
+      }, { 
+        style: "general",
+        autoHideDelay: 15000,
+      });
+      // TODO only clear on success
+      reset_form();
+    }, 1000);
+  }
 
   submission.submit = function submit() {
-    // backend things
+    post(collect());
   }
 
   submission.validate = function validate() {

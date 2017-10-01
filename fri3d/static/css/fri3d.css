@@ -400,3 +400,17 @@ input.choice {
   margin-top: 20px;
   clear: both;
 }
+
+/* general top notification */
+
+.notifyjs-general-base {
+  opacity: 0.95;
+  width: 600px;
+  background: #F5ffF5;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.notifyjs-general-base .message {
+  margin: 10px;
+}
