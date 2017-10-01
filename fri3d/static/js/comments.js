@@ -128,7 +128,7 @@ window.comments = {};
       details = '<div class="sidebar-box">' +
                   '<div>' + details + '</div>' +
                   '<div class="fadeout">' +
-                    '<p class="read-more"><a href="javascript:" class="button">' + i18n.get("MORE") + '</a></p>' +
+                    '<p class="read-more"><a href="javascript:" class="i18n button" data-i18n="MORE">' + i18n.get("MORE") + '</a></p>' +
                   '</div>' +
                 '</div>';
     }
@@ -141,7 +141,9 @@ window.comments = {};
   </div>\
 </div>'
     );
+    // activate button
     $(".sidebar-box .button").click(expand_details);
+    i18n.learn_element($(".sidebar-box .button")[0]);
   }
 
   var interval = 60000,

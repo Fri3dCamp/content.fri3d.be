@@ -85,12 +85,18 @@ window.i18n = {};
 
   // exposed setter for languages and translations
 
+  function i18n_learn_element(element) {
+    if( $(element).attr("data-i18n") ) {
+      elements.push(element);
+    }
+  };
+
+  i18n.learn_element = i18n_learn_element;
+
   i18n.learn = function i18n_learn(langs, trans) {
     // detect all elements that might need translation
     $(".i18n").each(function(index) {
-      if( $(this).attr("data-i18n") ) {
-        elements.push(this);
-      }
+      i18n_learn_element(this);
     });
 
     // setup languages + init toggle button
