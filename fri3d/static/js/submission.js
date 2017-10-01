@@ -98,12 +98,4 @@ window.submission = {};
     post(collect());
   }
 
-  submission.validate = function validate() {
-    // TODO
-  }
-
-  submission.reset = function reset() {
-    // TODO
-  }
-
 })(window.submission);
