@@ -2,12 +2,9 @@ window.comments = {};
 
 (function(comments) {
 
+  // TODO remove dummy datastore implementation
   // dummy local datastore
-  var data = [
-    { "who": "fri3d",  "message": "Message 3" },
-    { "who": "author", "message": "Message 2" },
-    { "who": "fri3d",  "message": "Message 1" }
-  ];
+  var data = [];
 
   function fetch(handler) {
     var id = get_current_submission_id();
@@ -96,7 +93,3 @@ window.comments = {};
   }
 
 })(window.comments);
-
-// TODO enabling should be done depending on who's logged on and if we're
-//      viewing the submission (not on initial submission)
-window.comments.enable_new_comment_by("author");
