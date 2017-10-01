@@ -59,7 +59,7 @@ window.comments = {};
   ];
 
   function fetch(handler) {
-    var id = submission = get_id();
+    var id = submission.get_id();
     // TODO fetch comments the (submission) id
     //      implemented asyncly to be closer to future impl ;-)
     setTimeout( function() { handler(data); }, 1000);
