@@ -82,28 +82,13 @@ window.submission = {};
     return data;
   }
 
-  // TODO extract into seperate module ?
-  $.notify.addStyle( "general", {
-    html: 
-      "<div>" +
-        "<div class='clearfix'>" +
-          "<div class='message' data-notify-html='message'/>" +
-        "</div>" +
-      "</div>"
-  });
-
   function post(data) {
     // TODO implement actual network posting
     console.log("posting", data);
     // TODO async behavior to match future actual post
     setTimeout(function() {
       // TODO notify of sucess _and_ failure ;-)
-      $.notify({
-        message: i18n.get("SAVED_DIALOG_CONTENTS"),
-      }, { 
-        style: "general",
-        autoHideDelay: 15000,
-      });
+      notifications.report_success("SAVED_DIALOG_CONTENTS");
       // TODO only clear on success
       reset_form();
     }, 1000);
