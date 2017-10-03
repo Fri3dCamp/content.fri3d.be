@@ -75,23 +75,52 @@ window.submission = {};
   }
 
   function collect() {
-    // TODO maybe do this manually, rewriting?, add interpretation?
-    //      or do that at BE?
+    // TODO add collaborators
     var data = {};
-    $("#cfp_form").serializeArray().map(function(x){data[x.name] = x.value;});
+    // we require per-datatype handling
+    $('#cfp_form').serializeArray().forEach(function(x) {
+      var input = $('#cfp_form input[name="'+x.name+'"]')[0]
+        || $('#cfp_form textarea[name="'+x.name+'"]')[0];
+      var d = undefined;
+      if (!input) {
+        console.log("weirdness; no input for "+x.name);
+        return;
+      }
+      if (input.type === 'number') {
+        d = parseInt(x.value);
+      } else if (input.type === 'checkbox') {
+        d = (x.value === 'on') ? true : false;
+      } else {
+        d = x.value;
+      }
+      data[x.name] = d;
+    });
+    data.collaborators = window.collaborators.members;
     return data;
   }
 
   function post(data) {
-    // TODO implement actual network posting
     console.log("posting", data);
-    // TODO async behavior to match future actual post
-    setTimeout(function() {
-      // TODO notify of sucess _and_ failure ;-)
-      notifications.report_success("SAVED_DIALOG_CONTENTS");
-      // TODO only clear on success
-      reset_form();
-    }, 1000);
+    $.ajax({
+      type : 'POST',
+      url : 'https://staging.api.fri3d.be/v1/submissions',
+      data : JSON.stringify(data),
+      contentType : 'application/json; charset=utf-8',
+      dataType : 'json',
+      success : function(ret) {
+        // TODO async behavior to match future actual post
+        setTimeout(function() {
+          // TODO notify of sucess _and_ failure ;-)
+          notifications.report_success("SAVED_DIALOG_CONTENTS");
+          // TODO only clear on success
+          reset_form();
+        }, 1000);
+      },
+      failure : function(ret) {
+        // TODO notif with dedicated message, don't reset
+        alert("Didn't work, please try again later");
+      },
+    });
   }
 
   submission.get_id = function get_id() {
