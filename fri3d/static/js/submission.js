@@ -147,7 +147,7 @@ window.submission = {};
     console.log("posting", data);
     $.ajax({
       type : 'POST',
-      url : 'https://api.fri3d.be/v1/submissions',
+      url : 'https://staging.api.fri3d.be/v1/submissions',
       data : JSON.stringify(data),
       contentType : 'application/json; charset=utf-8',
       dataType : 'json',
@@ -201,7 +201,7 @@ window.submission = {};
   submission.load = function(id) {
     $.ajax({
       type : 'GET',
-      url : 'https://api.fri3d.be/v1/submissions/'+id,
+      url : 'https://staging.api.fri3d.be/v1/submissions/'+id,
       dataType : 'json',
       success : function(ret) {
         show(ret);
