@@ -17,6 +17,10 @@ window.auth = {};
   }
   
   $(document).ready(function() {
+    var submission_id = window.submission.get_id();
+    if (submission_id) {
+        window.submission.load(submission_id);
+    }
     if( show_comments() ) {
       window.comments.enable_new_comment_by(
         have_authenticated_user() ? "fri3d" : "author"

@@ -32,7 +32,7 @@ window.responsive = {};
         $(this).change(function() {
           $("form").removeClass($(this).data("responsive"));
           if(this.checked ) {
-            $("form").addClass($(this).data("responsive"));            
+            $("form").addClass($(this).data("responsive"));
           }
         });
       }
@@ -46,12 +46,19 @@ window.responsive = {};
       $("div.category").removeClass("selected");
       $(this).addClass("selected");
       $("#title").focus();
+      submission.set_type($(this).data('category'));
     });
   }
 
   $( document ).ready(initialize);
-  
+
   // export initialize function for reset purposes
   responsive.initialize = initialize;
+
+  function get() {
+      console.dir($('div.category selected'));
+  }
+  responsive.get = get;
+
 
 })(window.responsive);

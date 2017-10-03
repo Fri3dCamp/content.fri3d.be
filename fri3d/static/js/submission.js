@@ -65,13 +65,20 @@ $( document ).ready(function() {
 window.submission = {};
 
 (function(submission) {
-  
+
+  var meta = {
+    'status' : 'PROPOSED',
+  };
+
   function reset_form() {
     // clear form fields
     $("form")[0].reset();
     // TODO check if this is enough?! e.g. toggles? default values?...
     // do a (re)init of the responsive behaviors
     responsive.initialize();
+    meta = {
+      'status' : 'PROPOSED',
+    };
   }
 
   function collect() {
@@ -92,11 +99,10 @@ window.submission = {};
 
     // we require per-datatype handling
     form.forEach(function(x) {
-      var input = $('#cfp_form input[name="'+x.name+'"]')[0]
-        || $('#cfp_form textarea[name="'+x.name+'"]')[0];
-      var d = undefined;
+      var input = $('#cfp_form [name="'+x.name+'"]')[0];
+      var d = null;
       if (!input) {
-        console.log("weirdness; no input for "+x.name);
+        console.log("WARNING; no input for "+x.name);
         return;
       }
       if (input.type === 'number') {
@@ -114,17 +120,25 @@ window.submission = {};
     data.audience_level = [];
     var audience_types = [ 'adult', 'beginner', 'child', 'expert',
       'family', 'intermediate' ];
-    // only populate data.audience_level if open_for_all is false
-    if (!('open_for_all' in data && data.open_for_all == true)) {
-      for (var i in audience_types) {
-        var n = audience_types[i];
-        var k = 'audience_type_' + n;
-        var e = 'LEVEL_' + n.toUpperCase();
-        if (k in data && data[k] == true) {
-          data.audience_level.push(e);
-        }
+    // explicitly add audience levels if they're checked and open_for_all
+    // is unchecked, remove them from the blob in any event
+    for (var i in audience_types) {
+      var n = audience_types[i];
+      var k = 'audience_type_' + n;
+      var e = 'LEVEL_' + n.toUpperCase();
+      if (data.open_for_all == true && k in data && data[k] == true) {
+        data.audience_level.push(e);
       }
+      // backend don't care
+      delete data[k];
     }
+
+    // patch in any meta information we might carry (id, status)
+    for (var key in meta) {
+      data[key] = meta[key];
+    }
+
+    data.form_language = data.form_language ? 'en' : 'nl';
 
     return data;
   }
@@ -133,12 +147,13 @@ window.submission = {};
     console.log("posting", data);
     $.ajax({
       type : 'POST',
-      url : 'https://staging.api.fri3d.be/v1/submissions',
+      url : 'https://api.fri3d.be/v1/submissions',
       data : JSON.stringify(data),
       contentType : 'application/json; charset=utf-8',
       dataType : 'json',
       success : function(ret) {
         // TODO async behavior to match future actual post
+        console.log("MY ID IS "+ret._id);
         setTimeout(function() {
           // TODO notify of sucess _and_ failure ;-)
           notifications.report_success("SAVED_DIALOG_CONTENTS");
@@ -153,17 +168,63 @@ window.submission = {};
     });
   }
 
-  submission.get_id = function get_id() {
-    // TODO replace with actual submission id extraction from e.g. URL
-    var parts = window.location ? window.location.hash.substr(1).split(",") : [];
-    var id = null;
-    $(parts).each(function(index) {
-      var parts = this.split(":");
-      if(parts[0] == "s") {
-        id = parts[1];
+  function show(submission) {
+    console.log("showing ", submission);
+    for (var key in submission) {
+      // special cases need individual handling
+      if (key === 'id' || key === 'status') {
+        meta[key] = submission[key];
+      } else if (key === 'type') {
+        meta[key] = submission[key];
+        $('#cfp_form div.category.'+submission[key].toLowerCase()).trigger('click');
+      } else if (key === 'audience_level') {
+        // XXX handle audience setting
+      } else if (key === 'form_language') {
+        $('#language').bootstrapToggle((submission[key] == 'en') ? 'on' : 'off');
+      } else if (key === 'collaborators') {
+        submission[key].forEach(function(c) {
+          collaborators.add(c.name, c.email);
+        });
+      } else {
+        // base case, unspecified form element
+        var input = $('#cfp_form [name="'+key+'"]');
+        if (input) {
+          input.val(submission[key]);
+        } else {
+          console.log("couldn't find input for "+key);
+        }
       }
+    }
+    $("#cfp_form").validator('validate');
+  }
+
+  submission.load = function(id) {
+    $.ajax({
+      type : 'GET',
+      url : 'https://api.fri3d.be/v1/submissions/'+id,
+      dataType : 'json',
+      success : function(ret) {
+        show(ret);
+      },
+      failure : function(ret) {
+        // XXX handle better
+        alert("Didn't work, please try again later");
+      },
     });
+  }
+
+  submission.get_id = function get_id() {
+    // pathname = '/cfp/submission_id'
+    var path = window.location.pathname.split('/')
+    var id = null;
+    if (path.length > 2) {
+      id = path[2];
+    }
     return id;
+  };
+
+  submission.set_type = function(type) {
+    meta.type = type.toUpperCase();
   };
 
   submission.submit = function submit() {

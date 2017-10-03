@@ -31,7 +31,9 @@ window.collaborators = {};
     members[name] = email;
     render_collaborators();
   }
-  
+
+  collaborators.add = add;
+
   function remove(name) {
     delete members[name];
     render_collaborators();
