@@ -75,10 +75,23 @@ window.submission = {};
   }
 
   function collect() {
-    // TODO add collaborators
     var data = {};
+    var form = $('#cfp_form').serializeArray();
+
+    // serializeArray() forgets unchecked checkboxes, add them here
+    $.each($('#cfp_form input[type="checkbox"]')
+      .filter(function(i) { return $(this).prop('checked') === false; }),
+      function(i, el) {
+        if (!$(el).attr('name')) {
+          console.log("WARNING; there's a form input without a name");
+          return;
+        }
+        form.push({ 'name' : $(el).attr('name'), 'value' : 'off'});
+      }
+    );
+
     // we require per-datatype handling
-    $('#cfp_form').serializeArray().forEach(function(x) {
+    form.forEach(function(x) {
       var input = $('#cfp_form input[name="'+x.name+'"]')[0]
         || $('#cfp_form textarea[name="'+x.name+'"]')[0];
       var d = undefined;
@@ -95,7 +108,24 @@ window.submission = {};
       }
       data[x.name] = d;
     });
-    data.collaborators = window.collaborators.members;
+
+    // collabs and audience level needs special handling
+    data.collaborators = window.collaborators.pack_for_shipping();
+    data.audience_level = [];
+    var audience_types = [ 'adult', 'beginner', 'child', 'expert',
+      'family', 'intermediate' ];
+    // only populate data.audience_level if open_for_all is false
+    if (!('open_for_all' in data && data.open_for_all == true)) {
+      for (var i in audience_types) {
+        var n = audience_types[i];
+        var k = 'audience_type_' + n;
+        var e = 'LEVEL_' + n.toUpperCase();
+        if (k in data && data[k] == true) {
+          data.audience_level.push(e);
+        }
+      }
+    }
+
     return data;
   }
 

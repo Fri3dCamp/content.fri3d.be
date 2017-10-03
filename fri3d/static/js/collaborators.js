@@ -1,9 +1,9 @@
 window.collaborators = {};
 
 (function(collaborators) {
-  
+
   var members = {};
-  
+
   function render_collaborator(name, email) {
     $("#collaborators").append('\
       <div class="row">\
@@ -35,6 +35,17 @@ window.collaborators = {};
   function remove(name) {
     delete members[name];
     render_collaborators();
+  }
+
+  collaborators.pack_for_shipping = function() {
+    var out = [];
+    for (var name in members) {
+        out.push({
+            'name' : name,
+            'email' : members[name],
+        });
+    }
+    return out;
   }
 
   collaborators.show_add_dialog = function show_add_collaborator_dialog() {
@@ -96,5 +107,7 @@ window.collaborators = {};
       ]
     });
   };
+
+  collaborators.members = members;
 
 })(window.collaborators);
