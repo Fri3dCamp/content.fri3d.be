@@ -2,67 +2,21 @@ window.comments = {};
 
 (function(comments) {
 
-  // TODO remove dummy datastore implementation
-  // dummy local datastore
-  var data = [
-    {
-      "who" : "author",
-      "message" : "Dit is mijn initieel voorstel. (Alle wijzigingen, deze inclusief worden mee in de historiek in de commentaren opgenomen.)",
-      "details" : {
-        "_id": "ec11007f-9f90-4976-9aff-b75dd7cbedf5",
-        "_index": "fri3d-cmp",
-        "_score": 1.0,
-        "_source": {
-           "contents": {
-              "cur": {
-                 "activity_duration": 60,
-                 "activity_participant_limit": 25,
-                 "affiliated": false,
-                 "always_available": true,
-                 "audience_level": [],
-                 "costs": 0,
-                 "day_1_available": true,
-                 "day_1_from": 9,
-                 "day_1_until": 21,
-                 "day_2_available": true,
-                 "day_2_from": 9,
-                 "day_2_until": 21,
-                 "day_3_available": true,
-                 "day_3_from": 9,
-                 "day_3_until": 21,
-                 "form_language": "nl",
-                 "format": false,
-                 "id": "5de07a12-ca83-4253-b35f-ce998c01050e",
-                 "multiple_sessions": false,
-                 "open_for_all": true,
-                 "open_for_repetitions": true,
-                 "session_count": 2,
-                 "speaker_bio": "",
-                 "speaker_email": "jef.vdb@gmail.com",
-                 "speaker_name": "Deploytest Mail #1",
-                 "status": "PROPOSED",
-                 "summary": "Deploytest Mail #1",
-                 "title": "Deploytest Mail #1",
-                 "type": "PRESENTATION",
-                 "visit_duration": 15
-              },
-              "diff": "<ul><h4>Toevoegingen:</h4>\n  <li><b>Huidige status</b>: <i>Ingediend</i></li>\n  <li><b>Type</b>: <i>Presentatie</i></li>\n  <li><b>Titel</b>: <i>Deploytest Mail #1</i></li>\n  <li><b>Beschrijving</b>: <i>Deploytest Mail #1</i></li>\n  <li><b>Naam</b>: <i>Deploytest Mail #1</i></li>\n  <li><b>Email</b>: <i>jef.vdb@gmail.com</i></li>\n  <li><b>Taal</b>: <i>nl</i></li>\n  <li><b>id</b>: <i>5de07a12-ca83-4253-b35f-ce998c01050e</i></li>\n</ul><!-- Toevoegingen:-->\n",
-              "prev": {}
-           },
-           "origin": "system",
-           "submission_id": "5de07a12-ca83-4253-b35f-ce998c01050e",
-           "timestamp": "2017-09-20T20:44:59.120Z"
-         },
-         "_type": "comments"
-       }
-    }
-  ];
-
   function fetch(handler) {
     var id = submission.get_id();
-    // TODO fetch comments the (submission) id
-    //      implemented asyncly to be closer to future impl ;-)
-    setTimeout( function() { handler(data); }, 1000);
+    $.ajax({
+      type : 'GET',
+      // TODO config knob
+      url : 'https://staging.api.fri3d.be/v1/submissions/'+id+'/comments',
+      dataType : 'json',
+      success : function(ret) {
+          handler(ret);
+      },
+      failure : function(ret) {
+        // XXX handle better
+        alert("Didn't work, please try again later");
+      },
+    });
   }
 
   function post(author, comment, handler) {
@@ -73,14 +27,30 @@ window.comments = {};
     //      this at the backend side ;-)
     // TODO the backend MUST sanitize the input !!!
     //      so this _bad_ quick 'n dirty demo solution, must be removed
+    $.ajax({
+      type : 'POST',
+      // TODO configknob
+      url : 'https://staging.api.fri3d.be/v1/comments?submission_id='+id+'&origin=fri3d',
+      data : JSON.stringify({ 'contents' : { 'message' : comment }, 'origin' : author }),
+      contentType : 'application/json; charset=utf-8',
+      dataType : 'json',
+      success : function(ret) {
+          // moo.
+      },
+      failure : function(ret) {
+        // TODO notif with dedicated message, don't reset
+        alert("Didn't work, please try again later");
+      },
+    });
+    // TODO move to POST success cb, but the call currently crashes...
     {
       var tmp = document.createElement("DIV");
       tmp.innerHTML = comment;
       comment = tmp.textContent || tmp.innerText || "";
     }
-    data.unshift({ "who": author, "message": comment });
     setTimeout( handler, 1000 );
-  }
+
+}
 
   function expand_details() {
     var $el, $ps, $up, totalHeight;
@@ -92,7 +62,7 @@ window.comments = {};
     $f  = $p.parent();
     $up = $f.parent();
     $ps = $up.find(":not('.fadeout')");
-    
+
     // take normal height of message div (first child) + same for last child
     totalHeight = $($ps).first().outerHeight() + $($ps).last().outerHeight();
 
@@ -116,13 +86,30 @@ window.comments = {};
     var who     = "author",
         icon    = "author.png",
         pos     = "left",
-        message = comment.message.split("\n").join("<br>\n"),
+        message = "een boodschap",
         details = comment["details"] == undefined ? false : 
                   comment["details"]["_source"]["contents"]["diff"];
-    if( comment.who == "fri3d" ) {
+    if( comment.origin == "fri3d" ) {
       who  = "fri3d";
       icon = "author-fri3d.png";
       pos  = "right";
+      message = "Een boodschap van de orga (op " + comment.timestamp + "):";
+      details = comment.contents.message;
+    } else if (comment.origin == "author") {
+      who  = "author";
+      icon = "author.png";
+      pos  = "left";
+      message = "Uw boodschap (op " + comment.timestamp + "):";
+      details = comment.contents.message;
+    } else if (comment.origin == "system") {
+      // TODO these are system-generated (when someone submits, at the moment
+      // we don't store _who_, so using "orga" here might give the wrong idea
+      // if $user clicks submit on an updated form
+      who = "fri3d";
+      icon = "author-fri3d.png";
+      pos = "right";
+      message = "Verandering aan de inhoud (op " + comment.timestamp + "):";
+      details = comment.contents.diff;
     }
     if(details) {
       details = '<div class="sidebar-box">' +
@@ -155,10 +142,10 @@ window.comments = {};
   // adding/posting a new comment
   function refresh() {
     if(loop) { clearTimeout(loop); } // don't get into multiple refresh loops
-    
+
     fetch(function(comments) {
       $("#comments .archive").empty();      
-      $(comments).each(function(index) { render(this); });
+      $(comments['data']).each(function(index) { render(this.data); });
       // done
       loop = setTimeout(refresh, interval);
     });
