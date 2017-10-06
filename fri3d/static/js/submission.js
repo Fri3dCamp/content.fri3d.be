@@ -169,7 +169,6 @@ window.submission = {};
   }
 
   function show(submission) {
-    console.log("showing ", submission);
     for (var key in submission) {
       // special cases need individual handling
       if (key === 'id' || key === 'status') {
@@ -189,7 +188,14 @@ window.submission = {};
         // base case, unspecified form element
         var input = $('#cfp_form [name="'+key+'"]');
         if (input) {
-          input.val(submission[key]);
+          if (input[0].type === 'checkbox') {
+            // checkboxes need prop(), not val()
+            // TODO for collapsibles like hackerspaces,
+            // this doesn't seem to do any collapsing
+            input.prop('checked', submission[key]);
+          } else {
+            input.val(submission[key]);
+          }
         } else {
           console.log("couldn't find input for "+key);
         }
