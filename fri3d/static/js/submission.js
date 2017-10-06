@@ -126,7 +126,7 @@ window.submission = {};
       var n = audience_types[i];
       var k = 'audience_type_' + n;
       var e = 'LEVEL_' + n.toUpperCase();
-      if (data.open_for_all == true && k in data && data[k] == true) {
+      if (data.open_for_all == false && k in data && data[k] == true) {
         data.audience_level.push(e);
       }
       // backend don't care
@@ -177,7 +177,10 @@ window.submission = {};
         meta[key] = submission[key];
         $('#cfp_form div.category.'+submission[key].toLowerCase()).trigger('click');
       } else if (key === 'audience_level') {
-        // XXX handle audience setting
+        for (var i in submission[key]) {
+          var what = submission[key][i].substring("LEVEL_".length).toLowerCase();
+          $('#cfp_form input[name="audience_type_'+what+'"]').prop('checked', true);
+        }
       } else if (key === 'form_language') {
         $('#language').bootstrapToggle((submission[key] == 'en') ? 'on' : 'off');
       } else if (key === 'collaborators') {
@@ -189,10 +192,12 @@ window.submission = {};
         var input = $('#cfp_form [name="'+key+'"]');
         if (input) {
           if (input[0].type === 'checkbox') {
-            // checkboxes need prop(), not val()
-            // TODO for collapsibles like hackerspaces,
-            // this doesn't seem to do any collapsing
-            input.prop('checked', submission[key]);
+            // checkboxes need prop(), not val(), except bootstraptoggles
+            if (input.data('toggle') == 'toggle') {
+              input.bootstrapToggle(submission[key] ? 'on' : 'off');
+            } else {
+              input.prop('checked', submission[key]);
+            }
           } else {
             input.val(submission[key]);
           }
