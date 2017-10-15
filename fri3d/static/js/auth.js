@@ -3,29 +3,79 @@ window.auth = {};
 (function(auth) {
 
   function have_authenticated_user() {
-    // TODO implement actual auth0 check for authenticated user
-    //      currently checks for a:fri3d in location hash
-    var parts = window.location ? window.location.hash.substr(1).split(",") : [];
-    var idx = parts.indexOf("a:fri3d");
-    return idx > -1;
+    var expires_at = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expires_at;
   }
 
-  function show_comments() {
-    // TODO replace with actual check for viewing in stead of submitting
-    //      currently checks for availability of s:123 in location hash
-    return submission.get_id();
+  auth.get_auth_headers = function() {
+    o = {};
+    if (have_authenticated_user()) {
+      o['Authorization'] = 'Bearer '+localStorage.getItem('access_token');
+      o['Access-Control-Allow-Origin'] = '*';
+    }
+    return o;
   }
-  
+
   $(document).ready(function() {
+    // auth stuff
+    var webAuth = new auth0.WebAuth({
+      domain : auth0_domain,
+      clientID : auth0_client_id,
+      redirectUri : auth0_redirect_uri,
+      audience : auth0_audience,
+      responseType : 'token id_token',
+      scope : 'openid profile admin user',
+    });
+    function handleAuthentication() {
+      webAuth.parseHash(function(e, ret) {
+        if (ret && ret.accessToken && ret.idToken) {
+          window.location.hash = '';
+          at = ret.accessToken;
+          localStorage.setItem('access_token', ret.accessToken);
+          localStorage.setItem('id_token', ret.idToken);
+          localStorage.setItem('expires_at', JSON.stringify(ret.expiresIn * 1000 + new Date().getTime()));
+          /*
+          webAuth.client.userInfo(ret.accessToken, function(e, ret) {
+            // do something with details about user here
+            console.log("userInfo ret=",ret);
+            console.log("userInfo e=",e);
+          });
+          */
+        }
+      });
+    };
+    // pull in auth data if present
+    handleAuthentication();
+
+    $('#btn-login').click(function(e) {
+        e.preventDefault();
+        webAuth.authorize();
+    });
+    $('#btn-logout').click(function(e) {
+        [ 'access_token', 'id_token', 'expires_at' ].forEach(function(x) { localStorage.removeItem(x); });
+        update_login_buttons();
+    });
+    function update_login_buttons() {
+        if (have_authenticated_user()) {
+            $('#btn-login').css('display', 'none');
+            $('#btn-logout').css('display', 'inline');
+        } else {
+            $('#btn-login').css('display', 'inline');
+            $('#btn-logout').css('display', 'none');
+        }
+    }
+    update_login_buttons();
+
+    // load up the page
     var submission_id = window.submission.get_id();
     if (submission_id) {
         window.submission.load(submission_id);
+        window.comments.enable_new_comment_by(
+          have_authenticated_user() ? "fri3d" : "author"
+        );
     }
-    if( show_comments() ) {
-      window.comments.enable_new_comment_by(
-        have_authenticated_user() ? "fri3d" : "author"
-      );
-    }
+
   });
-  
+
+
 })(window.auth);

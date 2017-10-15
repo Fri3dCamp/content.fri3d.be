@@ -147,10 +147,11 @@ window.submission = {};
     console.log("posting", data);
     $.ajax({
       type : 'POST',
-      url : 'https://staging.api.fri3d.be/v1/submissions',
+      url : fri3d_api_base + '/submissions',
       data : JSON.stringify(data),
       contentType : 'application/json; charset=utf-8',
       dataType : 'json',
+      headers : window.auth.get_auth_headers(),
       success : function(ret) {
         // TODO async behavior to match future actual post
         console.log("MY ID IS "+ret._id);
@@ -212,7 +213,7 @@ window.submission = {};
   submission.load = function(id) {
     $.ajax({
       type : 'GET',
-      url : 'https://staging.api.fri3d.be/v1/submissions/'+id,
+      url : fri3d_api_base + '/submissions/'+id,
       dataType : 'json',
       success : function(ret) {
         show(ret);
