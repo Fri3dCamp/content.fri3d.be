@@ -134,7 +134,7 @@ window.comments = {};
     i18n.learn_element($(".sidebar-box .button")[0]);
   }
 
-  var interval = 60000,
+  var interval = 6000,
       loop     = null;  // interval reference
 
   // this refresh function is used for normal, cyclic refreshing of the comments
@@ -145,7 +145,7 @@ window.comments = {};
     if(loop) { clearTimeout(loop); } // don't get into multiple refresh loops
 
     fetch(function(comments) {
-      $("#comments .archive").empty();      
+      $("#comments .archive").empty();
       $(comments['data']).each(function(index) { render(this.data); });
       // done
       loop = setTimeout(refresh, interval);
