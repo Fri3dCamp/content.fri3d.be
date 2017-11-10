@@ -30,7 +30,7 @@ window.comments = {};
     $.ajax({
       type : 'POST',
       // TODO configknob
-      url : fri3d_api_base + '/comments?submission_id='+id,
+      url : fri3d_api_base + '/submissions/' + id + '/comments',
       data : JSON.stringify({ 'contents' : { 'message' : comment }, 'origin' : author }),
       headers : window.auth.get_auth_headers(),
       contentType : 'application/json; charset=utf-8',
