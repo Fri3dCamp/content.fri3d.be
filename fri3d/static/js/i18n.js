@@ -1,6 +1,6 @@
 // some basic i18n support
 // external usage needs to provide (using the "learn()" method):
-// - "2 language codes", e.g. [ "nl", "en" ] 
+// - "2 language codes", e.g. [ "nl", "en" ]
 // - a translations dict
 // the language is stored in a hash part "l:<lang code>"
 // all elements marked with class="i18n" and having a "data-i18n" key will be
@@ -41,13 +41,13 @@ window.i18n = {};
       }
     });
     // translate all toggles
-    $("input:checkbox.i18n").each(function() {
+    /*$("input:checkbox.i18n").each(function() {
       $(this).bootstrapToggle("destroy"); // needed ;-(
       $(this).bootstrapToggle({
         on:  i18n_translate("TOGGLE_ON",  translated),
         off: i18n_translate("TOGGLE_OFF", translated)
       })
-    });
+  });*/
     // mark the document transated or not
     $("BODY").removeClass("translated");
     if( translated ) { $("BODY").addClass("translated"); }
@@ -67,7 +67,7 @@ window.i18n = {};
   function i18n_add_lang_hash(lang) {
     var parts = window.location.hash ? window.location.hash.substr(1).split(",") : [];
     parts.push( "l:" + lang );
-    window.location.hash = parts.join();  
+    window.location.hash = parts.join();
   }
 
   function i18n_apply_translation(translated) {
@@ -101,10 +101,10 @@ window.i18n = {};
 
     // setup languages + init toggle button
     languages = langs;
-    $('#language').bootstrapToggle({
+    /*$('#language').bootstrapToggle({
       off: languages[0].toUpperCase(),
       on:  languages[1].toUpperCase()
-    });
+  });*/
 
     // setup translations + show current lang (e.g. from hash)
     translations = trans;
@@ -119,8 +119,8 @@ window.i18n = {};
         autoHideDelay: 3000
       });
     }, 1000);
-    $('#language').bootstrapToggle(translated ? "on" : "off");
-    
+    //$('#language').bootstrapToggle(translated ? "on" : "off");
+
     i18n_show(translated);
 
     // trigger translation on toggle

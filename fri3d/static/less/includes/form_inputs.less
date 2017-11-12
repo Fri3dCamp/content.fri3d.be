@@ -1,0 +1,122 @@
+
+
+.fri3d-checkbox {
+    margin-right: 10px;
+    border:0;
+    background-color: transparent;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    &:checked + label:after {
+        background: @clr-primary4;
+    }
+}
+
+.fri3d-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    &:before {
+        content: '';
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        box-sizing: border-box;
+        background: white;
+        //border: 1px solid grey;
+        //box-shadow: inset 0 2px 4px @clr-gray3;
+        border:1px solid @clr-gray4;
+        &:hover {
+            background: @clr-primary7;
+        }
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: transparent;
+        transition: background-color 0.2s;
+    }
+}
+
+
+.fri3d-input {
+  background-color: white;
+  border: 0px;
+  padding-left:4px;
+  padding-right:4px;
+  padding-bottom:1px;
+  //box-shadow: inset 0 2px 4px @clr-gray3;
+  border-radius: 0;
+  border:1px solid @clr-gray4;
+  box-shadow: none;
+  &:focus {
+      background-color: @clr-primary7;
+  }
+}
+
+label {
+    font-weight: 400;
+}
+
+.langtoggle {
+  width: 80px;
+  height: 26px;
+  background: @clr-primary1;
+  position: relative;
+  border-radius: 50px;
+  margin-top: 40px;
+  float:right;
+  //box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  &:after {
+    content: 'NL';
+    color: white;
+    position: absolute;
+    right: 10px;
+    top:3px;
+    z-index: 0;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    //text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+  }
+  &:before {
+    content: 'EN';
+    color: white;
+    position: absolute;
+    left: 10px;
+    top:3px;
+    z-index: 0;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+  }
+  label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: white;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    //box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label {
+      left: 43px;
+    }
+  }
+}

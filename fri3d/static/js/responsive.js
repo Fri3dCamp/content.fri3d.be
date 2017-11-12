@@ -6,23 +6,31 @@
 window.responsive = {};
 
 (function(responsive) {
-  
+
   function initialize() {
     // start from a basic reset, just to be sure
-    
+
     // clear responsive trigger classes
     $("form").removeClass();
 
     // remove additional class on category buttons
     $("div.category").removeClass("selected");
 
+    var catheight = -1;
+    $("div.category").each(function(){
+        catheight = catheight > $(this).height() ? catheight : $(this).height();
+    });
+    $("div.category").each(function(){
+        $(this).height(catheight+10);
+    });
+
     // it seems that the sub-toggles on availability aren't reset to checked
     $(".when-not-always-available input:checkbox").each(function(index) {
-      $(this).bootstrapToggle('on');
+      //$(this).bootstrapToggle('on');
     });
 
     // setup repsonsive behaviour
-    
+
     // checkboxes/toggles do this on "change"
     $("input:checkbox").each(function(index) {
       if( $(this).attr("data-responsive") ) {
