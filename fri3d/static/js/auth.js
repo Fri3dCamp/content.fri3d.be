@@ -24,7 +24,6 @@ window.auth = {};
       redirectUri : auth0_redirect_uri,
       audience : auth0_audience,
       responseType : 'token id_token',
-      //scope : 'openid profile admin user',
       scope : 'openid roles',
     });
     function handleAuthentication() {
@@ -58,9 +57,11 @@ window.auth = {};
     });
     function update_login_buttons() {
         if (have_authenticated_user()) {
+            console.log("authed, cool");
             $('#btn-login').css('display', 'none');
             $('#btn-logout').css('display', 'inline');
         } else {
+            console.log("not authed yet.");
             $('#btn-login').css('display', 'inline');
             $('#btn-logout').css('display', 'none');
         }
