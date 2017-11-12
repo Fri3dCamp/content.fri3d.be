@@ -33,13 +33,34 @@ switched to db fri3d
 1
 ```
 
-## Run the Content site 
+## Run the Content site
 
 ```bash
 $ virtualenv venv
 $ . venv/bin/activate
 (venv) $ pip install -r requirements.txt
 (venv) $ python run.py
+```
+
+## Generate CSS
+
+CSS is generated from the *.less files in fri3d/static/less, which are translated to *.css files and placed in fri3d/static/css via a Gulp task.
+
+Gulp is used to parse LESS, Gulp can be installed through npm. All the required packages in package.json are related to CSS generation.
+
+Installing gulp and necessary dependencies, from the root of the project:
+```bash
+$ npm install
+```
+
+Generate readable css, from the root of the project:
+```bash
+$ gulp dev
+```
+
+Generate compact css, from the root of the project:
+```bash
+$ gulp
 ```
 
 ## Dependencies

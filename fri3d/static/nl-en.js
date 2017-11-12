@@ -17,10 +17,14 @@
       "No"
     ],
 
+    'PAGE_TITLE': [
+        'Fri3d Camp 2018 - Uitnodiging tot Deelname',
+        'Fri3d Camp 2018 - Call for Participation'
+    ],
+
     // INTRODUCTION
     'SUBMISSION_INTRO': [
-      '<h1>Fri3d Camp 2018 - Uitnodiging tot Deelname</h1>\
-      <div class="download pdf left"><a href="/assets/utd-2018.pdf" target="_blank"><img src="/static/images/fri3d-pdf.png"><br><br>Download de hele uitnodiging.</a></div>\
+      '<div class="download pdf left"><a href="/assets/utd-2018.pdf" target="_blank"><img src="/static/images/fri3d-pdf.png"><br><br>Download de hele uitnodiging.</a></div>\
       <p>Fri3d Camp brengt mensen met uiteenlopende interesses samen om vol enthousiasme van elkaar te leren. Gedurende <strong>drie dagen</strong> (en nachten) komen verschillende <strong>technologie- en wetenschap gerelateerde activiteiten</strong> aan bod. Tijdens Fri3d Camp staat het hacker- & makermotto centraal: "be excellent to each other".</p>\
       <p>De beste manier om deel te nemen aan Fri3d Camp is door <strong>zelf activiteiten</strong> te organiseren. We nodigen daarom <strong>iedereen</strong> uit om voorstellen te doen. <strong>We zoeken jullie</strong>: hackers, makers, artiesten, knutselaars, wetenschappers, ingenieurs, ouders en kinderen. We zoeken mensen die willen komen vertellen over wat hen boeit en waarom ze er door gepassioneerd zijn: elektronica, drones, LEGO, 3D scannen & printen, het internet der dingen, radiografie, knutselen met papier, beveiliging, grafische vormgeving, programmeren, muziek, bier brouwen, fimo kunst, … en nog veel meer.</p>\
       <p>Als je graag je steentje wil bijdragen aan Fri3d Camp en een <strong>presentatie</strong> wil geven over jouw passie, of een <strong>workshop</strong> wil inrichten om jouw kennis en kunde te delen met anderen, of op het terrein een <strong>kunstinstallatie</strong> wil uitwerken, een <strong>bosspel</strong> wil inrichten of gewoon het podium wil beklimmen en het beste van jezelf geven, … Laat van je horen en beantwoord deze uitnodiging tot deelname!</p>\
@@ -36,8 +40,7 @@
       <li>We gaan vervolgens samen met jou alles in detail nakijken, ter voorbereiding van een eventuele opname in het programma.</li>\
       </ul>',
 
-      '<h1>Fri3d Camp 2018 - Call for Participation</h1>\
-      <div class="download pdf left"><a href="/assets/cfp-2018.pdf" target="_blank"><img src="/static/images/fri3d-pdf.png"><br><br>Download the entire invitation.</a></div>\
+      '<div class="download pdf left"><a href="/assets/cfp-2018.pdf" target="_blank"><img src="/static/images/fri3d-pdf.png"><br><br>Download the entire invitation.</a></div>\
       <p>Fri3d Camp (www.fri3d.be) gathers people with a broad spectrum of interests and provides a breeding ground for learning from each other. During <strong>three days</strong> (and nights) many <strong>technology and science related activities</strong> make their appearance. At Fri3d Camp we live by the motto of the hacker and maker culture: "Be excellent to each other".</p>\
       <p>The best way to experience Fri3d Camp is by organising <strong>your own activities</strong>. We therefore invite <strong>everyone</strong> to submit proposals. <strong>We\'re looking for you</strong>: hackers, makers, artists, crafters, scientists, engineers, parents and children. We\'re looking for people who want to talk about their passion: electronics, drones, LEGO, 3D scanning and printing, Internet of Things, radio waves, craft, security, graphic design, programming, music, brewing beer, fimo art ... and a whole lot more.</p>\
       <p>If you want to contribute to Fri3d Camp and <strong>present</strong> your passion, host a <strong>workshop</strong> sharing your expertise with others, set up an <strong>artistic installation</strong>, organise <strong>forest games</strong> or maybe you have something else in mind? Reach out and answer our call for participation!</p>\
@@ -86,6 +89,11 @@
     'TYPE_OTHER_DESC': [
       'Wil je kunstzinnig aan de slag gaan op het terrein, of wil je entertainment van de bovenste plank brengen? Ook dat kan allemaal. We hebben een groot terrein, en verschillende accomodaties helemaal voor jou klaar staan.',
       'Do you have a creative or artistic idea to transform the campsite? Or do you want to bring top notch entertainment? We\'re open for all ideas, we have a large terrain and a wide variety of accommodation for all kinds of <i>other</i> activities.'
+    ],
+
+    'BASIC_INFO_SECTION_TITLE': [
+        'Beknopte informatie voor deelnemers',
+        'Basic information for participants'
     ],
 
     'BASIC_INFO_SECTION_SUMMARY': [
@@ -346,7 +354,7 @@
     ],
 
     // COMMENTS
-    
+
     'COMMENTS' : [
       'Je kan nog verdere commentaar of vragen toevoegen, wij zullen dat ook misschien wel doen ;-)',
       'You can add more comments or questions here, something we might do too ;-)'

@@ -1,0 +1,259 @@
+/* responsiveness through CSS */
+/* language dependence */
+.when-translated {
+  display: none;
+}
+BODY.translated .when-translated {
+  display: block;
+}
+/* category/type buttons */
+button.category {
+  white-space: normal;
+  margin-bottom: 15px;
+  height: 100%;
+  background-color: white;
+  border: 1px solid gray;
+}
+form.presentation button.category.presentation,
+form.workshop button.category.workshop,
+form.other button.category.other {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  color: white;
+}
+.when-have-type {
+  display: none;
+}
+form.presentation .when-have-type,
+form.workshop .when-have-type,
+form.other .when-have-type {
+  display: block;
+}
+.when-not-presentation {
+  display: block;
+}
+form.presentation .when-not-presentation {
+  display: none;
+}
+.when-workshop {
+  display: none;
+}
+form.workshop .when-workshop {
+  display: block;
+}
+/* affiliation */
+.when-affiliated {
+  display: none;
+}
+form.affiliated .when-affiliated {
+  display: block;
+}
+/* availability */
+.when-not-always-available {
+  display: block;
+}
+form.always-available .when-not-always-available {
+  display: none;
+}
+/* all audiences */
+.when-not-all-audiences {
+  display: block;
+}
+form.all-audiences .when-not-all-audiences {
+  display: none;
+}
+/* costs */
+.when-costs {
+  display: none;
+}
+form.costs .when-costs {
+  display: block;
+}
+/* walk in */
+.when-walk-in {
+  display: none;
+}
+form.walk-in .when-walk-in {
+  display: block;
+}
+/* multiple sessions */
+.when-multiple-sessions {
+  display: none;
+}
+form.multiple-sessions .when-multiple-sessions {
+  display: block;
+}
+/* comments */
+.when-comments {
+  display: none;
+}
+form.comments .when-comments {
+  display: block;
+}
+.when-author {
+  display: none;
+}
+form.author .when-author {
+  display: block;
+}
+.when-fri3d {
+  display: none;
+}
+form.fri3d .when-fri3d {
+  display: block;
+}
+#comments {
+  margin-top: 25px;
+  display: none;
+}
+.comment.author .author {
+  float: left;
+}
+.comment.fri3d .author {
+  float: right;
+}
+.comment.author .message {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.comment.fri3d .message {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.author img {
+  max-height: 75px;
+  max-width: 75px;
+}
+@media only screen and (max-width: 40.063em) {
+  .comment.author .message {
+    margin-left: 55px;
+    margin-right: 15px;
+  }
+  .comment.fri3d .message {
+    margin-left: 15px;
+    margin-right: 55px;
+  }
+  .author img {
+    max-height: 45px;
+    max-width: 45px;
+  }
+}
+.comment p {
+  padding-bottom: 0px;
+  /* reset */
+}
+/*
+  bubble design entirely in css:
+  respectfully extracted from
+  http://nicolasgallagher.com/pure-css-speech-bubbles/demo/default.css
+*/
+.triangle-border {
+  position: relative;
+  padding: 15px;
+  margin: 1em 0 3em;
+  border: 5px solid #006E7F;
+  color: #333;
+  background: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.triangle-border.left {
+  margin-left: 30px;
+}
+.triangle-border.right {
+  margin-right: 30px;
+}
+.triangle-border:before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  /* value = - border-top-width - border-bottom-width */
+  left: 40px;
+  /* controls horizontal position */
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: #006E7F transparent;
+  /* reduce the damage in FF3.0 */
+  display: block;
+  width: 0;
+}
+.triangle-border:after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  /* value = - border-top-width - border-bottom-width */
+  left: 47px;
+  /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width: 13px 13px 0;
+  border-style: solid;
+  border-color: #fff transparent;
+  /* reduce the damage in FF3.0 */
+  display: block;
+  width: 0;
+}
+.triangle-border.left:before {
+  top: 10px;
+  /* controls vertical position */
+  bottom: auto;
+  left: -30px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 15px 30px 15px 0;
+  border-color: transparent #006E7F;
+}
+.triangle-border.left:after {
+  top: 16px;
+  /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom: auto;
+  left: -21px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 9px 21px 9px 0;
+  border-color: transparent #fff;
+}
+.triangle-border.right:before {
+  top: 10px;
+  /* controls vertical position */
+  bottom: auto;
+  left: auto;
+  right: -30px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 15px 0 15px 30px;
+  border-color: transparent #006E7F;
+}
+.triangle-border.right:after {
+  top: 16px;
+  /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom: auto;
+  left: auto;
+  right: -21px;
+  /* value = - border-left-width - border-right-width */
+  border-width: 9px 0 9px 21px;
+  border-color: transparent #fff;
+}
+/* collapsed details */
+.sidebar-box {
+  max-height: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-box .read-more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+  /*  background-image: linear-gradient(to bottom, transparent, white);*/
+}
+.fadeout {
+  position: absolute;
+  bottom: 0em;
+  width: 100%;
+  height: 4em;
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
