@@ -34,6 +34,7 @@ window.auth = {};
           localStorage.setItem('access_token', ret.accessToken);
           localStorage.setItem('id_token', ret.idToken);
           localStorage.setItem('expires_at', JSON.stringify(ret.expiresIn * 1000 + new Date().getTime()));
+          update_login_buttons();
           /*
           webAuth.client.userInfo(ret.accessToken, function(e, ret) {
             // do something with details about user here
