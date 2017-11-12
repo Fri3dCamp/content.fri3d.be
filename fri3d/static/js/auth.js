@@ -24,7 +24,8 @@ window.auth = {};
       redirectUri : auth0_redirect_uri,
       audience : auth0_audience,
       responseType : 'token id_token',
-      scope : 'openid profile admin user',
+      //scope : 'openid profile admin user',
+      scope : 'openid roles',
     });
     function handleAuthentication() {
       webAuth.parseHash(function(e, ret) {
