@@ -10,7 +10,7 @@ MONGO_URI = os.environ.get('MONGODB_URI')
 if not MONGO_URI:
   MONGO_URI = "mongodb://fri3d:fri3d@localhost:27017/fri3d";
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="./content")
 
 app.config['MONGO_URI'] = MONGO_URI
 mongo = PyMongo(app)
