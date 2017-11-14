@@ -193,12 +193,8 @@ window.submission = {};
         var input = $('#cfp_form [name="'+key+'"]');
         if (input) {
           if (input[0].type === 'checkbox') {
-            // checkboxes need prop(), not val(), except bootstraptoggles
-            if (input.data('toggle') == 'toggle') {
-              input.bootstrapToggle(submission[key] ? 'on' : 'off');
-            } else {
-              input.prop('checked', submission[key]);
-            }
+            // checkboxes need prop(), not val()
+            input.prop('checked', submission[key]);
           } else {
             input.val(submission[key]);
           }
