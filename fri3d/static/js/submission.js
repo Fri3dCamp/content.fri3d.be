@@ -183,7 +183,12 @@ window.submission = {};
           $('#cfp_form input[name="audience_type_'+what+'"]').prop('checked', true);
         }
       } else if (key === 'form_language') {
-        $('#language').bootstrapToggle((submission[key] == 'en') ? 'on' : 'off');
+          if ( 'en' === submission[key] ) {
+              $( '#language' ).checked( true );
+          } else {
+              $( '#language' ).checked( false );
+          }
+        //$('#language').bootstrapToggle((submission[key] == 'en') ? 'on' : 'off');
       } else if (key === 'collaborators') {
         submission[key].forEach(function(c) {
           collaborators.add(c.name, c.email);
