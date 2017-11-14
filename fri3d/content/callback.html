@@ -13,8 +13,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link href="/static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
-    <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Ubuntu+Mono|Roboto" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,7 +21,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {% block moreCSS %}{% endblock %}
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" rel="stylesheet">
+  <link href="/static/css/cfp.css" rel="stylesheet">
+
 
     <link href="/static/css/fri3d.css" rel="stylesheet">
   </head>
@@ -49,7 +50,10 @@
       </div>
     </nav>
 
-    {% block content %}Empty{% endblock %}
+    <div class="container">
+       <button class="btn-login" id="btn-login">Log in</button>
+       <button class="btn-logout" id="btn-logout">Log out</button>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/static/js/vendor/ie10-viewport-bug-workaround.js"></script>
@@ -62,6 +66,18 @@
 
     <script src="/static/js/svg.js"></script>
 
-    {% block moreJS %}{% endblock %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0/8.9/auth0.min.js"></script>
+  <script src="/static/js/config.js"></script>
+  <script src="/static/js/responsive.js"></script>
+  <script src="/static/js/collaborators.js"></script>
+  <script src="/static/js/submission.js"></script>
+  <script src="/static/js/comments.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <script src="/static/nl-en.js"></script>
+
   </body>
 </html>
