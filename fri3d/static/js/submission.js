@@ -184,9 +184,9 @@ window.submission = {};
         }
       } else if (key === 'form_language') {
           if ( 'en' === submission[key] ) {
-              $( '#language' ).checked( true );
+              $( '#language' ).prop('checked', true);
           } else {
-              $( '#language' ).checked( false );
+              $( '#language' ).prop('checked', false);
           }
         //$('#language').bootstrapToggle((submission[key] == 'en') ? 'on' : 'off');
       } else if (key === 'collaborators') {
