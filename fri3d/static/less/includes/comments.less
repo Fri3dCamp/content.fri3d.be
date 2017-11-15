@@ -3,22 +3,66 @@
   display: none;
 }
 
-.comment.author .author {
-  float: left;
+.comment.author .author-img {
+
+    color: @clr-gray3;
+    &:before {
+        font-family: FontAwesome;
+        content:"\f007";
+    }
+    float: left;
 }
 
-.comment.fri3d .author {
+
+.comment.author .author-img {
+    font-size: 90px;
+    line-height: 100px;
+    @media only screen and (max-width: 40.063em) {
+            font-size: 50px;
+            line-height: 80px;
+    }
+}
+
+.comment.commentform.author .author-img {
+    font-size: 90px;
+    line-height: 80px;
+    @media only screen and (max-width: 40.063em) {
+            font-size: 50px;
+            line-height: 45px;
+    }
+}
+
+.comment.commentform.fri3d .author-img {
+    background-position: 0 10px;
+    @media only screen and (max-width: 40.063em) {
+        height: 50px;
+        background-position: 0;
+    }
+}
+
+.comment.fri3d .author-img {
   float: right;
+  background-image: url( '/static/images/author-fri3d.png' );
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 75px;
+  height: 90px;
+  background-position: 0 20px;
+  @media only screen and (max-width: 40.063em) {
+      width: 40px;
+      height: 70px;
+      background-position: 0 20px;
+  }
 }
 
 .comment.author .message {
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .comment.fri3d .message {
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .author img {
@@ -47,91 +91,99 @@
   padding-bottom: 0px; /* reset */
 }
 
+.comment {
+    margin-bottom: 50px;
+}
+
+.message {
+    position:relative;
+    textarea {
+        padding:10px;
+        //background-color: @clr-gray4;
+        margin-top: 20px;
+        resize:vertical;
+    }
+}
+
+.comment.commentform {
+    .message:after{
+        top: 21px;
+    }
+    .message:before {
+        top: 20px;
+    }
+}
+
+.message {
+    &:after {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        display: block;
+        width: 0;
+        top: 41px;
+
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        display: block;
+        width: 0;
+        top: 40px;
+    }
+}
+
+.message.left {
+    &:after {
+        left: -17px;
+        bottom: auto;
+        border-width: 0 18px 18px 0;
+        border-color: transparent white;
+    }
+    &:before {
+        left: -20px;
+        bottom: auto;
+        border-width: 0 20px 20px 0;
+        border-color: transparent @clr-gray4;
+    }
+}
+
+
+.message.right {
+    &:after {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        display: block;
+        width: 0;
+
+        top: 41px;
+        right: -17px;
+        bottom: auto;
+        border-width: 0 0 18px 18px;
+        border-color: transparent white;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        display: block;
+        width: 0;
+
+        top: 40px;
+        right: -20px;
+        bottom: auto;
+        border-width: 0 0 20px 20px;
+        border-color: transparent @clr-gray4;
+    }
+}
+
 /*
   bubble design entirely in css:
   respectfully extracted from
   http://nicolasgallagher.com/pure-css-speech-bubbles/demo/default.css
 */
-
-.triangle-border {
-  position:relative;
-  padding:15px;
-  margin:1em 0 3em;
-  border:5px solid #006E7F;
-  color:#333;
-  background:#fff;
-  -webkit-border-radius:10px;
-  -moz-border-radius:10px;
-  border-radius:10px;
-}
-
-.triangle-border.left {
-  margin-left:30px;
-}
-
-.triangle-border.right {
-  margin-right:30px;
-}
-
-.triangle-border:before {
-  content:"";
-  position:absolute;
-  bottom:-20px; /* value = - border-top-width - border-bottom-width */
-  left:40px; /* controls horizontal position */
-  border-width:20px 20px 0;
-  border-style:solid;
-  border-color:#006E7F transparent;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-}
-
-.triangle-border:after {
-  content:"";
-  position:absolute;
-  bottom:-13px; /* value = - border-top-width - border-bottom-width */
-  left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
-  border-width:13px 13px 0;
-  border-style:solid;
-  border-color:#fff transparent;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-}
-
-.triangle-border.left:before {
-  top:10px; /* controls vertical position */
-  bottom:auto;
-  left:-30px; /* value = - border-left-width - border-right-width */
-  border-width:15px 30px 15px 0;
-  border-color:transparent #006E7F;
-}
-
-.triangle-border.left:after {
-  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-  bottom:auto;
-  left:-21px; /* value = - border-left-width - border-right-width */
-  border-width:9px 21px 9px 0;
-  border-color:transparent #fff;
-}
-
-.triangle-border.right:before {
-  top:10px; /* controls vertical position */
-  bottom:auto;
-  left:auto;
-  right:-30px; /* value = - border-left-width - border-right-width */
-  border-width:15px 0 15px 30px;
-  border-color:transparent #006E7F;
-}
-
-.triangle-border.right:after {
-  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-  bottom:auto;
-  left:auto;
-  right:-21px; /* value = - border-left-width - border-right-width */
-  border-width:9px 0 9px 21px;
-  border-color:transparent #fff;
-}
 
 /* collapsed details */
 
@@ -139,6 +191,9 @@
   max-height: 60px;
   position: relative;
   overflow: hidden;
+  border: 1px solid @clr-gray4;
+  background-color: white;
+  padding: 10px;
 }
 .sidebar-box .read-more {
   position: absolute;
@@ -177,4 +232,15 @@
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 1) 100%
   );
+}
+
+.commentbtn {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.commentmeta {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color:@clr-gray3;
 }

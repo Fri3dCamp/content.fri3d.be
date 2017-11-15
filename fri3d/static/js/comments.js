@@ -88,7 +88,7 @@ window.comments = {};
         icon    = "author.png",
         pos     = "left",
         message = "een boodschap",
-        details = comment["details"] == undefined ? false : 
+        details = comment["details"] == undefined ? false :
                   comment["details"]["_source"]["contents"]["diff"];
     if( comment.origin == "fri3d" ) {
       who  = "fri3d";
@@ -123,9 +123,9 @@ window.comments = {};
 
     $("#comments .archive").append('\
 <div class="comment ' + who + '">\
-  <div class="author"><img src="/static/images/' + icon + '"></div>\
-  <div class="message triangle-border ' + pos + '">\
-    <p>' + message + '</p>' + details + '\
+  <div class="author-img"></div>\
+  <div class="message ' + pos + '">\
+    <p class="commentmeta">' + message + '</p>' + details + '\
   </div>\
 </div>'
     );

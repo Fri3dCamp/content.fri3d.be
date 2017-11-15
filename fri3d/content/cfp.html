@@ -423,21 +423,21 @@
                         <p class="i18n" data-i18n="COMMENTS"></p>
                     </div>
 
-                    <div class="comment author when-author">
-                        <div class="author"><img src="/static/images/author.png"></div>
-                        <div class="message triangle-border left">
+                    <div class="comment commentform author when-author">
+                        <div class="author-img"></div>
+                        <div class="message left">
                             <textarea class="form-control fri3d-input" rows="3" style="width:100%;height:100%;"></textarea>
-                            <p align="right" style="margin-top:3px;">
+                            <p class="commentbtn">
                                 <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add('author', this.parentElement.parentElement.children[0]); return false;"></span>
                             </p>
                         </div>
                     </div>
 
-                    <div class="comment fri3d when-fri3d">
-                        <div class="author"><img src="/static/images/author-fri3d.png"></div>
-                        <div class="message triangle-border right">
+                    <div class="comment commentform fri3d when-author">
+                        <div class="author-img"></div>
+                        <div class="message right">
                             <textarea class="form-control fri3d-input" rows="3" style="width:100%;height:100%"></textarea>
-                            <p align="right" style="margin-top:3px;">
+                            <p class="commentbtn">
                                 <span class="btn btn-primary btn-sm i18n" data-i18n="BTN_SEND" role="button" onclick="comments.add('fri3d', this.parentElement.parentElement.children[0]); return false;"></span>
                             </p>
                         </div>
