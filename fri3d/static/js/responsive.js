@@ -16,12 +16,13 @@ window.responsive = {};
     // remove additional class on category buttons
     $("div.category").removeClass("selected");
 
+    //category height instellen obv tekstlengte
     var catheight = -1;
     $("div.category").each(function(){
-        catheight = catheight > $(this).height() ? catheight : $(this).height();
+        catheight = catheight > $(this).children("p").innerHeight() ? catheight : $(this).children("p").innerHeight();
     });
     $("div.category").each(function(){
-        $(this).height(catheight+10);
+        $(this).children("p").innerHeight(catheight*1.1);
     });
 
     // it seems that the sub-toggles on availability aren't reset to checked
