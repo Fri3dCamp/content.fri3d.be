@@ -182,13 +182,13 @@ form.fri3d .when-fri3d {
   background-repeat: no-repeat;
   background-size: contain;
   width: 75px;
-  height: 90px;
+  height: 100px;
   background-position: 0 20px;
 }
 @media only screen and (max-width: 40.063em) {
   .comment.fri3d .author-img {
     width: 40px;
-    height: 70px;
+    height: 90px;
     background-position: 0 20px;
   }
 }
