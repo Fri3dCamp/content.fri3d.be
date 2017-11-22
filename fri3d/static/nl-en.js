@@ -379,6 +379,18 @@
       "Oops, daar ging iets mis. Indien het probleem zich herhaalt, geef ons een seintje.",
       "Oops, something went wrong. If the problem persists, let us know."
     ],
+    "COMMENT_BY_FRI3D" : [
+      "Een boodschap van orga",
+      "A message from orga"
+    ],
+    "COMMENT_BY_AUTHOR" : [
+      "Uw boodschap",
+      "Your message"
+    ],
+    "COMMENT_BY_SYSTEM" : [
+      "Verandering aan het voorstel",
+      "Changes to the proposal"
+    ],
 
     // SAVED DIALOG
     'SAVED_DIALOG_HEADER' : [

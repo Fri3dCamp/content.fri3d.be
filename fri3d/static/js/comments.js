@@ -81,30 +81,25 @@ window.comments = {};
         details = comment["details"] == undefined ? false :
                   comment["details"]["_source"]["contents"]["diff"];
     if( comment.origin == "fri3d" ) {
-      who  = "fri3d";
-      icon = "author-fri3d.png";
-      pos  = "right";
-      // TODO i18n ?!
-      message = "Een boodschap van de orga (op " + comment.timestamp + "):";
+      who     = "fri3d";
+      icon    = "author-fri3d.png";
+      pos     = "right";
       details = comment.contents.message;
     } else if (comment.origin == "author") {
-      who  = "author";
-      icon = "author.png";
-      pos  = "left";
-      // TODO i18n ?!
-      message = "Uw boodschap (op " + comment.timestamp + "):";
+      who     = "author";
+      icon    = "author.png";
+      pos     = "left";
       details = comment.contents.message;
     } else if (comment.origin == "system") {
       // TODO these are system-generated (when someone submits, at the moment
       // we don't store _who_, so using "orga" here might give the wrong idea
       // if $user clicks submit on an updated form
-      who = "fri3d";
-      icon = "author-fri3d.png";
-      pos = "right";
-      // TODO i18n ?!
-      message = "Verandering aan de inhoud (op " + comment.timestamp + "):";
+      who     = "fri3d";
+      icon    = "author-fri3d.png";
+      pos     = "right";
       details = comment.contents.diff;
     }
+
     if(details) {
       details = '<div class="sidebar-box">' +
                   '<div class="details">' + details + '</div>' +
@@ -118,11 +113,16 @@ window.comments = {};
 <div class="comment ' + who + '">\
   <div class="author-img"></div>\
   <div class="message ' + pos + '">\
-    <p class="commentmeta">' + message + '</p>' +
+    <p class="commentmeta">\
+      <span class="i18n origin" data-i18n="' + "COMMENT_BY_" + comment.origin.toUpperCase() + '">' + i18n.get("COMMENT_BY_" + comment.origin.toUpperCase()) + '</span>\
+      <span class="timestamp">(' + comment.timestamp + ')</span></p>' +
     details + '\
   </div>\
 </div>');
     $("#comments .archive").append(comment.el);
+
+    // enable i18n for origin header info
+    i18n.learn_element(comment.el.find(".origin")[0]);
 
     // is this comment (on refresh) is already expanded, keep it expanded,
     // else provide button to expand
