@@ -13,8 +13,7 @@ window.comments = {};
           handler(ret);
       },
       failure : function(ret) {
-        // XXX handle better
-        alert("Didn't work, please try again later");
+        notifications.report_failure("FETCH_COMMENTS_FAILURE");
       },
     });
   }
@@ -39,8 +38,7 @@ window.comments = {};
           // moo.
       },
       failure : function(ret) {
-        // TODO notif with dedicated message, don't reset
-        alert("Didn't work, please try again later");
+        notifications.report_failure("POST_COMMENT_FAILURE");
       },
     });
     // TODO move to POST success cb, but the call currently crashes...
@@ -87,6 +85,7 @@ window.comments = {};
     var who     = "author",
         icon    = "author.png",
         pos     = "left",
+        // TODO i18n ?!
         message = "een boodschap",
         details = comment["details"] == undefined ? false :
                   comment["details"]["_source"]["contents"]["diff"];
@@ -94,12 +93,14 @@ window.comments = {};
       who  = "fri3d";
       icon = "author-fri3d.png";
       pos  = "right";
+      // TODO i18n ?!
       message = "Een boodschap van de orga (op " + comment.timestamp + "):";
       details = comment.contents.message;
     } else if (comment.origin == "author") {
       who  = "author";
       icon = "author.png";
       pos  = "left";
+      // TODO i18n ?!
       message = "Uw boodschap (op " + comment.timestamp + "):";
       details = comment.contents.message;
     } else if (comment.origin == "system") {
@@ -109,6 +110,7 @@ window.comments = {};
       who = "fri3d";
       icon = "author-fri3d.png";
       pos = "right";
+      // TODO i18n ?!
       message = "Verandering aan de inhoud (op " + comment.timestamp + "):";
       details = comment.contents.diff;
     }

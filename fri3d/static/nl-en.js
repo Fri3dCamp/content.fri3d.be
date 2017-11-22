@@ -371,6 +371,14 @@
       'meer',
       'more'
     ],
+    "FETCH_COMMENTS_FAILURE": [
+      "Oops, daar ging iets mis. Indien het probleem zich herhaalt, geef ons een seintje.",
+      "Oops, something went wrong. If the problem persists, let us know."
+    ],
+    "POST_COMMENT_FAILURE" : [
+      "Oops, daar ging iets mis. Indien het probleem zich herhaalt, geef ons een seintje.",
+      "Oops, something went wrong. If the problem persists, let us know."
+    ],
 
     // SAVED DIALOG
     'SAVED_DIALOG_HEADER' : [
