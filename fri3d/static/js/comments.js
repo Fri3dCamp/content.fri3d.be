@@ -33,32 +33,28 @@ window.comments = {};
         if( handler) { setTimeout( handler, 100 ); }
         // call refresh explicitely to refresh comments, including new one, this
         // way we don't need to sanitize client-side, and can rely on the server
-        setTimeout( refresh, 100 );
+        setTimeout( refresh, 1000 );
       },
       failure : function(ret) {
         notifications.report_failure("POST_COMMENT_FAILURE");
       },
     });
+  }
 
-}
+  var expanded = {};
 
-  function expand_details() {
-    var $el, $ps, $up, totalHeight;
-
-    totalHeight = 0;
-
-    $el = $(this);
-    $p  = $el.parent();
-    $f  = $p.parent();
-    $up = $f.parent();
-    $ps = $up.find(":not('.fadeout')");
+  function expand_details(comment) {
+    var box         = $(comment.el.find(".sidebar-box")),
+        details     = $(comment.el.find(".details")),
+        fadeout     = $(comment.el.find(".fadeout")),
+        totalHeight = 0;
 
     // take normal height of message div (first child) + same for last child
-    totalHeight = $($ps).first().outerHeight() + $($ps).last().outerHeight();
+    totalHeight = details.outerHeight() + fadeout.outerHeight();
 
-    $up.css({
+    box.css({
       // Set height to prevent instant jumpdown when max height is removed
-      "height": $up.height(),
+      "height": box.height(),
       "max-height": 9999
     })
     .animate({
@@ -66,7 +62,11 @@ window.comments = {};
     });
 
     // fade out read-more
-    $f.fadeOut();
+    fadeout.fadeOut();
+
+    // mark comment as expanded, by keeping it in a list of expanded comments
+    // this is used by refresh to keep expanded comments expanded
+    expanded[comment.timestamp] = true;
 
     // prevent jump-down
     return false;
@@ -107,28 +107,37 @@ window.comments = {};
     }
     if(details) {
       details = '<div class="sidebar-box">' +
-                  '<div>' + details + '</div>' +
+                  '<div class="details">' + details + '</div>' +
                   '<div class="fadeout">' +
                     '<p class="read-more"><a href="javascript:" class="i18n button" data-i18n="MORE">' + i18n.get("MORE") + '</a></p>' +
                   '</div>' +
                 '</div>';
     }
 
-    $("#comments .archive").append('\
+    comment.el = $('\
 <div class="comment ' + who + '">\
   <div class="author-img"></div>\
   <div class="message ' + pos + '">\
-    <p class="commentmeta">' + message + '</p>' + details + '\
+    <p class="commentmeta">' + message + '</p>' +
+    details + '\
   </div>\
-</div>'
-    );
-    // activate button
-    $(".sidebar-box .button").click(expand_details);
-    i18n.learn_element($(".sidebar-box .button")[0]);
+</div>');
+    $("#comments .archive").append(comment.el);
+
+    // is this comment (on refresh) is already expanded, keep it expanded,
+    // else provide button to expand
+    if( comment.timestamp in expanded ) {
+      expand_details(comment);
+    } else {
+      // activate button and enable i18n
+      comment.el.find(".sidebar-box .button").click(function() { expand_details(comment); });
+      i18n.learn_element($(".sidebar-box .button")[0]);
+    }
   }
 
-  var interval = 6000,
-      loop     = null;  // interval reference
+  var interval       = 6000,
+      loop           = null;  // interval reference
+      shown_comments = { "total" : 0 };
 
   // this refresh function is used for normal, cyclic refreshing of the comments
   // you never know if there is some kind of "dialog going on" in real time ;-)
@@ -138,10 +147,13 @@ window.comments = {};
     if(loop) { clearTimeout(loop); } // don't get into multiple refresh loops
 
     fetch(function(comments) {
-      $("#comments .archive").empty();
-      $(comments['data']).each(function(index) { render(this.data); });
-      // done
-      loop = setTimeout(refresh, interval);
+      if( comments.total != shown_comments.total ) {
+        $("#comments .archive").empty();
+        $(comments['data']).each(function(index) { render(this.data); });
+        // done
+        loop = setTimeout(refresh, interval);
+        shown_comments = comments;
+      }
     });
   }
 
