@@ -22,4 +22,14 @@ window.notifications = {};
     });
   };
 
+  // API call to report failure
+  notifications.report_failure = function report_failure(message) {
+    $.notify({
+      message: i18n.get(message),
+    }, {
+      style: "error",
+      autoHideDelay: 15000,
+    });
+  };
+
 })(window.notifications);
