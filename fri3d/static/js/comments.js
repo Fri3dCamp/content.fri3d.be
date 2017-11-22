@@ -10,7 +10,7 @@ window.comments = {};
       url : fri3d_api_base + '/submissions/'+id+'/comments',
       dataType : 'json',
       success : function(ret) {
-          handler(ret);
+        if( handler ) { handler(ret); }
       },
       failure : function(ret) {
         notifications.report_failure("FETCH_COMMENTS_FAILURE");
