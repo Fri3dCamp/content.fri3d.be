@@ -20,12 +20,6 @@ window.comments = {};
 
   function post(author, comment, handler) {
     var id = submission.get_id();
-    // TODO post to backend in stead of add to local dummy data
-    //      implemented asyncly to be closer to future impl ;-)
-    // TODO we shouldn't rely on this author information, we _should_ check
-    //      this at the backend side ;-)
-    // TODO the backend MUST sanitize the input !!!
-    //      so this _bad_ quick 'n dirty demo solution, must be removed
     $.ajax({
       type : 'POST',
       // TODO configknob
@@ -35,19 +29,16 @@ window.comments = {};
       contentType : 'application/json; charset=utf-8',
       dataType : 'json',
       success : function(ret) {
-          // moo.
+        // call (optional) handler
+        if( handler) { setTimeout( handler, 100 ); }
+        // call refresh explicitely to refresh comments, including new one, this
+        // way we don't need to sanitize client-side, and can rely on the server
+        setTimeout( refresh, 100 );
       },
       failure : function(ret) {
         notifications.report_failure("POST_COMMENT_FAILURE");
       },
     });
-    // TODO move to POST success cb, but the call currently crashes...
-    {
-      var tmp = document.createElement("DIV");
-      tmp.innerHTML = comment;
-      comment = tmp.textContent || tmp.innerText || "";
-    }
-    setTimeout( handler, 1000 );
 
 }
 
