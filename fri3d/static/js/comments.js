@@ -130,8 +130,9 @@ window.comments = {};
       expand_details(comment);
     } else {
       // activate button and enable i18n
-      comment.el.find(".sidebar-box .button").click(function() { expand_details(comment); });
-      i18n.learn_element($(".sidebar-box .button")[0]);
+      var button = comment.el.find(".sidebar-box .button")[0];
+      button.click(function() { expand_details(comment); });
+      i18n.learn_element(button);
     }
   }
 
