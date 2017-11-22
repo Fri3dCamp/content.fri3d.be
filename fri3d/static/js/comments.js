@@ -73,22 +73,16 @@ window.comments = {};
   }
 
   function render(comment) {
+    // defaults to the author of the proposal
     var who     = "author",
         icon    = "author.png",
         pos     = "left",
-        // TODO i18n ?!
-        message = "een boodschap",
-        details = comment["details"] == undefined ? false :
-                  comment["details"]["_source"]["contents"]["diff"];
+        details = comment.contents.message;
+
     if( comment.origin == "fri3d" ) {
       who     = "fri3d";
       icon    = "author-fri3d.png";
       pos     = "right";
-      details = comment.contents.message;
-    } else if (comment.origin == "author") {
-      who     = "author";
-      icon    = "author.png";
-      pos     = "left";
       details = comment.contents.message;
     } else if (comment.origin == "system") {
       // TODO these are system-generated (when someone submits, at the moment
@@ -116,7 +110,7 @@ window.comments = {};
     <p class="commentmeta">\
       <span class="i18n origin" data-i18n="' + "COMMENT_BY_" + comment.origin.toUpperCase() + '">' + i18n.get("COMMENT_BY_" + comment.origin.toUpperCase()) + '</span>\
       <span class="timestamp">(' + comment.timestamp + ')</span></p>' +
-    details + '\
+      details + '\
   </div>\
 </div>');
     $("#comments .archive").append(comment.el);
