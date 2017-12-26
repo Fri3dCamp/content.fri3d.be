@@ -155,13 +155,15 @@ window.submission = {};
       dataType : 'json',
       headers : window.auth.get_auth_headers(),
       success : function(ret) {
-        // TODO async behavior to match future actual post
         console.log("MY ID IS "+ret._id);
         setTimeout(function() {
-          // TODO notify of sucess _and_ failure ;-)
-          notifications.report_success("SAVED_DIALOG_CONTENTS");
-          // TODO only clear on success
-          reset_form();
+          // TODO only clear when it was a new submission, don't when update
+          if(! get_id() ) {
+            notifications.report_success("SAVED_DIALOG_CONTENTS");
+            reset_form();
+          } else {
+            notifications.report_success("UPDATED_DIALOG_CONTENTS");            
+          }
         }, 1000);
       },
       failure : function(ret) {
@@ -229,7 +231,7 @@ window.submission = {};
     });
   }
 
-  submission.get_id = function get_id() {
+  function get_id() {
     // pathname = '/cfp/submission_id'
     var path = window.location.pathname.split('/')
     var id = null;
@@ -238,6 +240,8 @@ window.submission = {};
     }
     return id;
   };
+
+  submission.get_id = get_id;
 
   submission.set_type = function(type) {
     meta.type = type.toUpperCase();
