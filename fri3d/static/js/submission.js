@@ -73,6 +73,8 @@ window.submission = {};
   function reset_form() {
     // clear form fields
     $("form")[0].reset();
+    // clear collaborators
+    collaborators.clear();
     // TODO check if this is enough?! e.g. toggles? default values?...
     // do a (re)init of the responsive behaviors
     responsive.initialize();

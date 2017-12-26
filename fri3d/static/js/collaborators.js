@@ -39,6 +39,13 @@ window.collaborators = {};
     render_collaborators();
   }
 
+  function clear() {
+    members = {};
+    render_collaborators();
+  }
+
+  collaborators.clear = clear;
+
   collaborators.pack_for_shipping = function() {
     var out = [];
     for (var name in members) {
