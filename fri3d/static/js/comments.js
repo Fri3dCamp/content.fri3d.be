@@ -106,7 +106,7 @@ window.comments = {};
     comment.el = $('\
 <div class="comment ' + who + '">\
   <div class="author-img"></div>\
-  <div class="message ' + pos + '">\
+  <div class="comment ' + pos + '">\
     <p class="commentmeta">\
       <span class="i18n origin" data-i18n="' + "COMMENT_BY_" + comment.origin.toUpperCase() + '">' + i18n.get("COMMENT_BY_" + comment.origin.toUpperCase()) + '</span>\
       <span class="timestamp">(' + comment.timestamp + ')</span></p>' +
