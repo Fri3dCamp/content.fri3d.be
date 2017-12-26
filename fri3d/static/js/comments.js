@@ -101,32 +101,31 @@ window.comments = {};
                     '<p class="read-more"><a href="javascript:" class="i18n button" data-i18n="MORE">' + i18n.get("MORE") + '</a></p>' +
                   '</div>' +
                 '</div>';
-    }
+      comment.el = $('\
+  <div class="comment ' + who + '">\
+    <div class="author-img"></div>\
+    <div class="comment ' + pos + '">\
+      <p class="commentmeta">\
+        <span class="i18n origin" data-i18n="' + "COMMENT_BY_" + comment.origin.toUpperCase() + '">' + i18n.get("COMMENT_BY_" + comment.origin.toUpperCase()) + '</span>\
+        <span class="timestamp">(' + comment.timestamp + ')</span></p>' +
+        details + '\
+    </div>\
+  </div>');
+      $("#comments .archive").append(comment.el);
 
-    comment.el = $('\
-<div class="comment ' + who + '">\
-  <div class="author-img"></div>\
-  <div class="comment ' + pos + '">\
-    <p class="commentmeta">\
-      <span class="i18n origin" data-i18n="' + "COMMENT_BY_" + comment.origin.toUpperCase() + '">' + i18n.get("COMMENT_BY_" + comment.origin.toUpperCase()) + '</span>\
-      <span class="timestamp">(' + comment.timestamp + ')</span></p>' +
-      details + '\
-  </div>\
-</div>');
-    $("#comments .archive").append(comment.el);
-
-    // enable i18n for origin header info
-    i18n.learn_element(comment.el.find(".origin")[0]);
-
-    // is this comment (on refresh) is already expanded, keep it expanded,
-    // else provide button to expand
-    if( comment.timestamp in expanded ) {
-      expand_details(comment);
-    } else {
-      // activate button and enable i18n
-      var button = $(comment.el.find(".sidebar-box .button")[0]);
-      button.click(function() { expand_details(comment); });
-      i18n.learn_element(button);
+      // enable i18n for origin header info
+      i18n.learn_element(comment.el.find(".origin")[0]);
+  
+      // is this comment (on refresh) is already expanded, keep it expanded,
+      // else provide button to expand
+      if( comment.timestamp in expanded ) {
+        expand_details(comment);
+      } else {
+        // activate button and enable i18n
+        var button = $(comment.el.find(".sidebar-box .button")[0]);
+        button.click(function() { expand_details(comment); });
+        i18n.learn_element(button);
+      }
     }
   }
 
