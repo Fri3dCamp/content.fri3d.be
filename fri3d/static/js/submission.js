@@ -202,6 +202,7 @@ window.submission = {};
           if (input[0].type === 'checkbox') {
             // checkboxes need prop(), not val()
             input.prop('checked', submission[key]);
+            $(input).trigger("change");
           } else {
             input.val(submission[key]);
           }
