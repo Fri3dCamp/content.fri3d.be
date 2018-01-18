@@ -151,9 +151,6 @@ div.download.pdf.small IMG {
   height: 30px;
   margin-bottom: 3px;
 }
-div.download.pdf.small a {
-  color: white;
-}
 @media only screen and (min-width: 768px) {
   .button-container {
     display: table;
@@ -189,63 +186,6 @@ div.download.pdf.small a {
 }
 .category:hover {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-}
-/* domain root page (default) cards stylinh */
-.default {
-  padding: 0px;
-  margin: 0px;
-}
-.cards {
-  margin: 25px;
-}
-@media only screen and (max-width: 40.063em) {
-  .cards {
-    margin: 10px;
-  }
-}
-.card-block {
-  padding: 15px;
-}
-.card {
-  border: none;
-  margin-bottom: 10px;
-  border-radius: 0.25rem;
-}
-.card.light {
-  background-color: #00C9D2;
-}
-.card.dark {
-  background-color: #006F7D;
-  color: #fff;
-}
-.card-title {
-  font-size: 24px;
-  margin-top: 15px;
-}
-.card-subtitle {
-  font-size: 16px;
-  margin-bottom: 20px;
-  margin-top: -5px;
-}
-.card-date {
-  font-size: 80%;
-  margin-top: 15px;
-  float: right;
-  color: #d3d3d3;
-}
-img.card-img-right {
-  width: 80px;
-  height: 80px;
-  float: right;
-}
-.card .card-text a {
-  color: white;
-}
-.card-img-top {
-  width: 100%;
-}
-.card.tweet {
-  padding: 5px;
 }
 /* buttons */
 .btn-primary {
