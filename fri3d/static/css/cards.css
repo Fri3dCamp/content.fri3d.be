@@ -111,6 +111,6 @@ img.card-img-right {
   width: 100%;
 }
 
-.card.tweet {
+.card .tweet {
   padding: 5px;
 }
