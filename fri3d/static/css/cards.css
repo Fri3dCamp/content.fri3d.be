@@ -75,6 +75,15 @@
   }
 }
 
+/* solution for anchor too-far jump */
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -73px;
+  visibility: hidden;
+}
+
 /* basic cards styling */
 
 .card {
