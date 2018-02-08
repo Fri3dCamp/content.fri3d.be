@@ -21,6 +21,8 @@ $(document).ready(function() {
   // skip past our static header
   $.fn.validator.Constructor.FOCUS_OFFSET = 100;
 
+  $("#prohibited").hide();
+
   $('#cfp_form').validator().on('submit', function(e) {
     if (e.isDefaultPrevented()) {
       // validation found & highlighted an error
