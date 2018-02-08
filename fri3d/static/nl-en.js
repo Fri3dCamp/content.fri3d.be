@@ -346,6 +346,10 @@
       'Het formulier bevat nog fouten of niet ingevulde velden waardoor je het niet kan bewaren. Doorloop het even en corrigeer de fouten of vul de ontbrekende gegevens aan.',
       'This form still contains errors or blank fields which prevent it from being saved. Take some time to check everything, add missing data or correct the errors.'
     ],
+    'PROHIBITED_FORM' : [
+      'Deze ingave is al door ons in behandeling (je zou een mailtje moeten gekregen hebben hieromtrend). Ze kan niet meer aangepast worden.',
+      'This entry is being processed by us (you should have received a mail about this). It can no longer be updated.'
+    ],
 
     // SUBMISSION
     'SAVE': [
