@@ -67,7 +67,6 @@ window.submission = {};
 (function(submission) {
 
   var meta = {
-    'status' : 'PROPOSED',
   };
 
   function reset_form() {
@@ -79,7 +78,6 @@ window.submission = {};
     // do a (re)init of the responsive behaviors
     responsive.initialize();
     meta = {
-      'status' : 'PROPOSED',
     };
   }
 
@@ -162,7 +160,7 @@ window.submission = {};
             notifications.report_success("SAVED_DIALOG_CONTENTS");
             reset_form();
           } else {
-            notifications.report_success("UPDATED_DIALOG_CONTENTS");            
+            notifications.report_success("UPDATED_DIALOG_CONTENTS");
           }
         }, 1000);
       },
@@ -176,7 +174,7 @@ window.submission = {};
   function show(submission) {
     for (var key in submission) {
       // special cases need individual handling
-      if (key === 'id' || key === 'status') {
+      if (key === 'id') {
         meta[key] = submission[key];
       } else if (key === 'type') {
         meta[key] = submission[key];
@@ -200,7 +198,7 @@ window.submission = {};
       } else {
         // base case, unspecified form element
         var input = $('#cfp_form [name="'+key+'"]');
-        if (input) {
+        if (input && input.length > 0) {
           if (input[0].type === 'checkbox') {
             // checkboxes need prop(), not val()
             input.prop('checked', submission[key]);
@@ -214,6 +212,19 @@ window.submission = {};
       }
     }
     $("#cfp_form").validator('validate');
+
+    // if already past the proposed state, disable changes
+    if (submission.status != 'PROPOSED') {
+      $("#prohibited").show();
+      $("#prohibited").focus();
+      // actually disable inputs for non-fri3d, except comments
+      if (!window.auth.have_authenticated_user()) {
+        $("#cfp_form :input").prop("disabled", true);
+        $("#cfp_form #comments :input").prop("disabled", false);
+      }
+    } else {
+      $("#prohibited").hide();
+    }
   }
 
   submission.load = function(id) {
