@@ -2,14 +2,14 @@ window.auth = {};
 
 (function(auth) {
 
-  auth.have_authenticated_user = function() {
+  function have_authenticated_user() {
     var expires_at = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expires_at;
   }
 
   auth.get_auth_headers = function() {
     o = {};
-    if (auth.have_authenticated_user()) {
+    if (have_authenticated_user()) {
       o['Authorization'] = 'Bearer '+localStorage.getItem('access_token');
       o['Access-Control-Allow-Origin'] = '*';
     }
@@ -57,7 +57,7 @@ window.auth = {};
         update_login_buttons();
     });
     function update_login_buttons() {
-        if (auth.have_authenticated_user()) {
+        if (have_authenticated_user()) {
             console.log("authed, cool");
             $('#btn-login').css('display', 'none');
             $('#btn-logout').css('display', 'inline');
@@ -74,7 +74,7 @@ window.auth = {};
     if (submission_id) {
         window.submission.load(submission_id);
         window.comments.enable_new_comment_by(
-          auth.have_authenticated_user() ? "fri3d" : "author"
+          have_authenticated_user() ? "fri3d" : "author"
         );
     }
 
