@@ -18,6 +18,13 @@ gulp.task('dev', function() {
         .pipe(gulp.dest('fri3d/static/css'))
 });
 
+gulp.task('remote', function() {
+    gulp.src(['fri3d/static/less/*.less'])
+        .pipe(less())
+        .pipe(gulp.dest('fri3d/static/css'))
+        .pipe(gulp.dest('../be.fri3d.content.staging/ui/static/css'))
+});
+
 gulp.task('stream', function () {
     // Endless stream mode
     gulp.watch(['fri3d/static/less/*.less'], ['dev']);
