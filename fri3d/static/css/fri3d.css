@@ -342,7 +342,7 @@ input.choice {
   padding: 5px;
   border-radius: 10px;
 }
-.notifyjs-general-base .message {
+.notifyjs-general-base p {
   margin: 10px;
 }
 .fri3d-hint {
@@ -467,4 +467,24 @@ label {
 }
 .langtoggle input[type=checkbox]:checked + label {
   left: 43px;
+}
+.warning {
+  padding: 16px;
+  background-color: #FFD16A;
+}
+.fa-warning {
+  color: #000;
+  font-size: 24px;
+  float: left;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.admin-only {
+  background-color: #EDEDED;
+  padding: 16px;
+  margin-top: 24px;
+  border-left: 2px solid #E49D00;
+}
+.admin-only > h2 {
+  margin-top: 0;
 }

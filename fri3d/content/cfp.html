@@ -106,10 +106,12 @@
             </div>
             <div class="when-have-type">
             <div class="row">
-                <div id="prohibited">
-                    <div class="fa fa-fw fa-warning"></div>
-                    <div>
-                        <p class="i18n" data-i18n="PROHIBITED_FORM"></p>
+                <div class="col-xs-12"  id="prohibited">
+                    <div class="warning">
+                        <p>
+                            <span class="fa fa-fw fa-warning"></span>
+                            <span class="i18n" data-i18n="PROHIBITED_FORM"></span>
+                        </p>
                         <p class="TODO">TODO; class 'prohibited' erroringly tonen.</p>
                         <p class="TODO">TODO; naar deze error .focus()'en lijkt ondeterministisch.</p>
                     </div>
@@ -420,98 +422,101 @@
 
                 </div>
 
-                <h2 class="when-fri3d">Administratie</h2>
-                <style>.TODO{color: red;};</style>
-                <p class="when-fri3d TODO">Deze sectie enkel visible voor fri3d. </p>
+                <section class="admin-only">
+                    <h2 class="when-fri3d">Administratie</h2>
+                    <p>Deze informatie is enkel zichtbaar voor ingelogde beheerders</p>
+                    <style>.TODO{color: red;};</style>
+                    <p class="when-fri3d TODO">Deze sectie enkel visible voor fri3d. </p>
 
-                <div class="form-group when-fri3d">
-                    <div class="row">
-                        <div class="col-md-12"><p class="TODO">Needed: backendcheck dat (new_status == 'proposed' &amp;&amp; prev_status == new_status) bij non-fri3d submit.</p></div>
-                        <div class="col-md-12"><p class="TODO">Backend progressie naar activity kan gebeuren bij (new_status == 'accepted' &amp;&amp; prev_status != new_status).</p></div>
-                        <div class="form-group col-md-12">
-                            <label for="fld_status" class="i18n">Status:</label>
-                            <select name="status" id="fld_status">
-                                <option value="PROPOSED">proposed</value>
-                                <option value="ACCEPTED">accepted</value>
-                                <option value="REJECTED">rejected</value>
-                            </select>
+                    <div class="form-group when-fri3d">
+                        <div class="row">
+                            <div class="col-md-12"><p class="TODO">Needed: backendcheck dat (new_status == 'proposed' &amp;&amp; prev_status == new_status) bij non-fri3d submit.</p></div>
+                            <div class="col-md-12"><p class="TODO">Backend progressie naar activity kan gebeuren bij (new_status == 'accepted' &amp;&amp; prev_status != new_status).</p></div>
+                            <div class="form-group col-md-12">
+                                <label for="fld_status" class="i18n">Status:</label>
+                                <select name="status" id="fld_status">
+                                    <option value="PROPOSED">proposed</value>
+                                    <option value="ACCEPTED">accepted</value>
+                                    <option value="REJECTED">rejected</value>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12"><p class="TODO">Message kan bij in de mail komen als toelichting (vooral bij rejection)</p></div>
-                        <div class="form-group col-md-12">
-                            <label for="status_message">Message:</label>
-                            <textarea class="form-control fri3d-input" id="status_message" rows="2" name="status_change_message" data-max-chars="350"></textarea>
+                        <div class="row">
+                            <div class="col-md-12"><p class="TODO">Message kan bij in de mail komen als toelichting (vooral bij rejection)</p></div>
+                            <div class="form-group col-md-12">
+                                <label for="status_message">Message:</label>
+                                <textarea class="form-control fri3d-input" id="status_message" rows="2" name="status_change_message" data-max-chars="350"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row"><div class="col-md-12"><p class="TODO">Niet zeker van deze setup, mogelijk liever een dynamische setup (a la collabs)? Time-choosers zijn op zen minst te onspecifiek. Location-choosers zijn placeholders.</p></div></div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_1_planned" name="activity_day_1_planned">
-                            <label for="fld_activity_day_1_planned" class="i18n" data-i18n="DAY_ONE"></label>
+                        <div class="row"><div class="col-md-12"><p class="TODO">Niet zeker van deze setup, mogelijk liever een dynamische setup (a la collabs)? Time-choosers zijn op zen minst te onspecifiek. Location-choosers zijn placeholders.</p></div></div>
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_1_planned" name="activity_day_1_planned">
+                                <label for="fld_activity_day_1_planned" class="i18n" data-i18n="DAY_ONE"></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_1_from" class="i18n" data-i18n="FROM"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_1_from" value="9" min="9" max="21" name="activity_day_1_from">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_1_until" class="i18n" data-i18n="UNTIL"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_1_until" value="21" min="9" max="21" name="activity_day_1_until">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_1_location">Waar:</label>
+                                <select name="activity_day_1_location" id="fld_activity_day_1_location">
+                                    <option value="LOCATION_MAINSTAGE">main stage</value>
+                                    <option value="LOCATION_WORKSHOP">workshop</value>
+                                    <option value="LOCATION_FIRESIDE">fireside</value>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_1_from" class="i18n" data-i18n="FROM"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_1_from" value="9" min="9" max="21" name="activity_day_1_from">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_2_planned" name="activity_day_2_planned">
+                                <label for="fld_activity_day_2_planned" class="i18n" data-i18n="DAY_ONE"></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_2_from" class="i18n" data-i18n="FROM"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_2_from" value="9" min="9" max="21" name="activity_day_2_from">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_2_until" class="i18n" data-i18n="UNTIL"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_2_until" value="21" min="9" max="21" name="activity_day_2_until">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_2_location">Waar:</label>
+                                <select name="activity_day_2_location" id="fld_activity_day_2_location">
+                                    <option value="LOCATION_MAINSTAGE">main stage</value>
+                                    <option value="LOCATION_WORKSHOP">workshop</value>
+                                    <option value="LOCATION_FIRESIDE">fireside</value>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_1_until" class="i18n" data-i18n="UNTIL"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_1_until" value="21" min="9" max="21" name="activity_day_1_until">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_3_planned" name="activity_day_3_planned">
+                                <label for="fld_activity_day_3_planned" class="i18n" data-i18n="DAY_ONE"></label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_3_from" class="i18n" data-i18n="FROM"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_3_from" value="9" min="9" max="21" name="activity_day_3_from">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_3_until" class="i18n" data-i18n="UNTIL"></label>
+                                <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_3_until" value="21" min="9" max="21" name="activity_day_3_until">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fld_activity_day_3_location">Waar:</label>
+                                <select name="activity_day_3_location" id="fld_activity_day_3_location">
+                                    <option value="LOCATION_MAINSTAGE">main stage</value>
+                                    <option value="LOCATION_WORKSHOP">workshop</value>
+                                    <option value="LOCATION_FIRESIDE">fireside</value>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_1_location">Waar:</label>
-                            <select name="activity_day_1_location" id="fld_activity_day_1_location">
-                                <option value="LOCATION_MAINSTAGE">main stage</value>
-                                <option value="LOCATION_WORKSHOP">workshop</value>
-                                <option value="LOCATION_FIRESIDE">fireside</value>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_2_planned" name="activity_day_2_planned">
-                            <label for="fld_activity_day_2_planned" class="i18n" data-i18n="DAY_ONE"></label>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_2_from" class="i18n" data-i18n="FROM"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_2_from" value="9" min="9" max="21" name="activity_day_2_from">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_2_until" class="i18n" data-i18n="UNTIL"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_2_until" value="21" min="9" max="21" name="activity_day_2_until">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_2_location">Waar:</label>
-                            <select name="activity_day_2_location" id="fld_activity_day_2_location">
-                                <option value="LOCATION_MAINSTAGE">main stage</value>
-                                <option value="LOCATION_WORKSHOP">workshop</value>
-                                <option value="LOCATION_FIRESIDE">fireside</value>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <input type="checkbox" class="i18n fri3d-checkbox" id="fld_activity_day_3_planned" name="activity_day_3_planned">
-                            <label for="fld_activity_day_3_planned" class="i18n" data-i18n="DAY_ONE"></label>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_3_from" class="i18n" data-i18n="FROM"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_3_from" value="9" min="9" max="21" name="activity_day_3_from">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_3_until" class="i18n" data-i18n="UNTIL"></label>
-                            <input type="number" class="form-control fri3d-input" id="fld_activity_activity_day_3_until" value="21" min="9" max="21" name="activity_day_3_until">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="fld_activity_day_3_location">Waar:</label>
-                            <select name="activity_day_3_location" id="fld_activity_day_3_location">
-                                <option value="LOCATION_MAINSTAGE">main stage</value>
-                                <option value="LOCATION_WORKSHOP">workshop</value>
-                                <option value="LOCATION_FIRESIDE">fireside</value>
-                            </select>
-                        </div>
-                    </div>
-                </div> <!-- admin section inputs -->
+                    </div> <!-- admin section inputs -->
+                </section>
 
 
                 <div id="errors">
