@@ -421,6 +421,20 @@
     'WRONG_EMAIL_DIALOG_OK' : [
       "Ok!",
       "Ok!"
+    ],
+
+    // CLOSED
+    "CLOSED_TITLE" : [
+      "Dank u!",
+      "Thank you!"
+    ],
+    "CLOSED_DESC" : [
+      "<p>Na 166 dagen beëindigen we onze uitnodiging tot deelname. Jullie hebben massaal gereageerd en enorm veel knappe voorstellen gedaan voor presentaties, workshops en allerlei andere vernuftige activiteiten. Dank daarvoor.</p>\
+      <p>Nu gaan we aan de slag om al die voorstellen te bekijken, aan te vullen en er een fantastisch Fri3d programma mee samen te stellen. We gaan ons uiterste best doen om al die voorstellen een plek te geven. Maar ondanks dat we op de Kluis over een enorm groot terrein beschikking, kunnen we niet garanderen dat we al die voorstellen op de drie dagen die voorhanden zijn zullen kunnen inplannen. Op voorhand willen we ons dus al oprecht verontschuldigen dat we soms pijnlijke keuzes zullen moeten maken.</p>\
+      <p>Bedankt, en tot 1 mei voor de aankondiging van het programma van Fri3d Camp 2018!</p>",
+      "<p>After 166 days, we terminating our call for participation. Your response was fenomenal. We received so many wonderful proposals for presentations, workshops and other interesting activities. Thank you for that.</p>\
+       <p>Now we're going to take a look at al these proposals, expand them and create a great Fri3d program. We will do our very best to include all of these proposals, but even with a brand new location of gigantic proportions, we'll probably won't have enough time to schedule all of them in the three days of camp. So we want to apologise up-front for the heartbreaking choice we'll have to make.</p>\
+       <p>Thank you once again, and remember: May 1 we will announce the Fri3d Camp 2018 program!</p>"
     ]
   })
 })(window.i18n);
