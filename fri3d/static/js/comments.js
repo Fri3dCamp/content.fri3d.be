@@ -7,7 +7,7 @@ window.comments = {};
     $.ajax({
       type : 'GET',
       // TODO config knob
-      url : fri3d_api_base + '/submissions/'+id+'/comments',
+      url : config["fri3d_api_base"] + '/submissions/'+id+'/comments',
       dataType : 'json',
       success : function(ret) {
         if( handler ) { handler(ret); }
@@ -23,7 +23,7 @@ window.comments = {};
     $.ajax({
       type : 'POST',
       // TODO configknob
-      url : fri3d_api_base + '/submissions/' + id + '/comments',
+      url : config["fri3d_api_base"] + '/submissions/' + id + '/comments',
       data : JSON.stringify({ 'contents' : { 'message' : comment }, 'origin' : author }),
       headers : window.auth.get_auth_headers(),
       contentType : 'application/json; charset=utf-8',

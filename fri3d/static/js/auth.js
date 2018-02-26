@@ -19,10 +19,10 @@ window.auth = {};
   $(document).ready(function() {
     // auth stuff
     var webAuth = new auth0.WebAuth({
-      domain : auth0_domain,
-      clientID : auth0_client_id,
-      redirectUri : auth0_redirect_uri,
-      audience : auth0_audience,
+      domain : config["auth0_domain"],
+      clientID : config["auth0_client_id"],
+      redirectUri : config["auth0_redirect_uri"],
+      audience : config["auth0_audience"],
       responseType : 'token id_token',
       scope : 'openid roles',
     });

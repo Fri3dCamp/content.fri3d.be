@@ -149,7 +149,7 @@ window.submission = {};
     console.log("posting", data);
     $.ajax({
       type : 'POST',
-      url : fri3d_api_base + '/submissions',
+      url : config["fri3d_api_base"] + '/submissions',
       data : JSON.stringify(data),
       contentType : 'application/json; charset=utf-8',
       dataType : 'json',
@@ -232,7 +232,7 @@ window.submission = {};
   submission.load = function(id) {
     $.ajax({
       type : 'GET',
-      url : fri3d_api_base + '/submissions/'+id,
+      url : config["fri3d_api_base"] + '/submissions/'+id,
       dataType : 'json',
       success : function(ret) {
         show(ret);
