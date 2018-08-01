@@ -225,32 +225,37 @@ form.fri3d .when-fri3d {
 .comment {
   margin-bottom: 50px;
 }
-.comment {
+.message {
   position: relative;
+}
+.message textarea {
+  padding: 10px;
+  margin-top: 20px;
+  resize: vertical;
 }
 .comment textarea {
   padding: 10px;
   margin-top: 20px;
   resize: vertical;
 }
-.comment.commentform .comment:after {
+.comment.commentform .message:after {
   top: 21px;
 }
-.comment.commentform .comment:before {
+.comment.commentform .message:before {
   top: 20px;
 }
-.comment:after {
+.message:after {
   content: "";
   position: absolute;
-  border-style: none;
+  border-style: solid;
   display: block;
   width: 0;
   top: 41px;
 }
-.comment:before {
+.message:before {
   content: "";
   position: absolute;
-  border-style: none;
+  border-style: solid;
   display: block;
   width: 0;
   top: 40px;

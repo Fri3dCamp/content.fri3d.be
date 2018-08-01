@@ -2,14 +2,14 @@ window.auth = {};
 
 (function(auth) {
 
-  function have_authenticated_user() {
+  auth.have_authenticated_user = function() {
     var expires_at = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expires_at;
   }
 
   auth.get_auth_headers = function() {
     o = {};
-    if (have_authenticated_user()) {
+    if (auth.have_authenticated_user()) {
       o['Authorization'] = 'Bearer '+localStorage.getItem('access_token');
       o['Access-Control-Allow-Origin'] = '*';
     }
@@ -19,10 +19,10 @@ window.auth = {};
   $(document).ready(function() {
     // auth stuff
     var webAuth = new auth0.WebAuth({
-      domain : auth0_domain,
-      clientID : auth0_client_id,
-      redirectUri : auth0_redirect_uri,
-      audience : auth0_audience,
+      domain : config["auth0_domain"],
+      clientID : config["auth0_client_id"],
+      redirectUri : config["auth0_redirect_uri"],
+      audience : config["auth0_audience"],
       responseType : 'token id_token',
       scope : 'openid roles',
     });
@@ -57,7 +57,7 @@ window.auth = {};
         update_login_buttons();
     });
     function update_login_buttons() {
-        if (have_authenticated_user()) {
+        if (auth.have_authenticated_user()) {
             console.log("authed, cool");
             $('#btn-login').css('display', 'none');
             $('#btn-logout').css('display', 'inline');
@@ -74,7 +74,7 @@ window.auth = {};
     if (submission_id) {
         window.submission.load(submission_id);
         window.comments.enable_new_comment_by(
-          have_authenticated_user() ? "fri3d" : "author"
+          auth.have_authenticated_user() ? "fri3d" : "author"
         );
     }
 

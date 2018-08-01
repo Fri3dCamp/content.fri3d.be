@@ -55,12 +55,12 @@
   }
 }
 
-.comment.author .message {
+.comment.author .comment {
   margin-left: 100px;
   margin-right: 100px;
 }
 
-.comment.fri3d .message {
+.comment.fri3d .comment {
   margin-left: 100px;
   margin-right: 100px;
 }
@@ -71,12 +71,12 @@
 }
 
 @media only screen and (max-width: 40.063em) {
-  .comment.author .message {
+  .comment.author .comment {
     margin-left: 55px;
     margin-right: 15px;
   }
 
-  .comment.fri3d .message {
+  .comment.fri3d .comment {
     margin-left: 15px;
     margin-right: 55px;
   }
@@ -103,6 +103,13 @@
         margin-top: 20px;
         resize:vertical;
     }
+}
+
+.comment textarea {
+    padding:10px;
+    //background-color: @clr-gray4;
+    margin-top: 20px;
+    resize:vertical;
 }
 
 .comment.commentform {
@@ -134,7 +141,7 @@
     }
 }
 
-.message.left {
+.comment.left {
     &:after {
         left: -17px;
         bottom: auto;
@@ -150,7 +157,7 @@
 }
 
 
-.message.right {
+.comment.right {
     &:after {
         content: "";
         position: absolute;

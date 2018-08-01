@@ -151,6 +151,9 @@ div.download.pdf.small IMG {
   height: 30px;
   margin-bottom: 3px;
 }
+div.download.pdf.small a {
+  color: white;
+}
 @media only screen and (min-width: 768px) {
   .button-container {
     display: table;
@@ -180,12 +183,66 @@ div.download.pdf.small IMG {
 }
 .category.selected {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-  background-color: #0E98AF;
+  background-color: #0E96AF;
   color: white;
-  border: solid 1px #0E98AF;
+  border: solid 1px #0E96AF;
 }
 .category:hover {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+/* domain root page (default) cards stylinh */
+.default {
+  padding: 0px;
+  margin: 0px;
+}
+.cards {
+  margin: 25px;
+}
+@media only screen and (max-width: 40.063em) {
+  .cards {
+    margin: 10px;
+  }
+}
+.card-block {
+  padding: 15px;
+}
+.card {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 0.25rem;
+}
+.card.light {
+  background-color: #00C9D2;
+}
+.card.dark {
+  background-color: #006F7D;
+  color: #fff;
+}
+.card-title {
+  font-size: 24px;
+  margin-top: 15px;
+}
+.card-subtitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+.card-date {
+  font-size: 80%;
+  margin-top: 15px;
+  float: right;
+  color: #d3d3d3;
+}
+img.card-img-right {
+  width: 80px;
+  height: 80px;
+  float: right;
+}
+.card-img-top {
+  width: 100%;
+}
+.card.tweet {
+  padding: 5px;
 }
 /* buttons */
 .btn-primary {
@@ -282,7 +339,7 @@ input.choice {
   padding: 5px;
   border-radius: 10px;
 }
-.notifyjs-general-base .message {
+.notifyjs-general-base p {
   margin: 10px;
 }
 .fri3d-hint {
@@ -407,4 +464,24 @@ label {
 }
 .langtoggle input[type=checkbox]:checked + label {
   left: 43px;
+}
+.warning {
+  padding: 16px;
+  background-color: #FFD16A;
+}
+.fa-warning {
+  color: #000;
+  font-size: 24px;
+  float: left;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.admin-only {
+  background-color: #EDEDED;
+  padding: 16px;
+  margin-top: 24px;
+  border-left: 2px solid #E49D00;
+}
+.admin-only > h2 {
+  margin-top: 0;
 }

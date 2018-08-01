@@ -1,5 +1,5 @@
 @import "includes/ie10-viewport-bug-workaround";
-@import "includes/colors";
+@import "includes/params";
 @import "includes/headers";
 
 /* navigation */
@@ -164,9 +164,9 @@ div.download.pdf.small a {
 
 .category.selected {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
-  background-color: #0E98AF;
+  background-color: @clr-primary1;
   color: white;
-  border: solid 1px #0E98AF;
+  border: solid 1px @clr-primary1;
 }
 
 .category:hover {
@@ -368,7 +368,7 @@ input.choice {
   border-radius: 10px;
 }
 
-.notifyjs-general-base .message {
+.notifyjs-general-base p {
   margin: 10px;
 }
 
